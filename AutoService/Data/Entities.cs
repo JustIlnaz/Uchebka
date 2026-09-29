@@ -21,6 +21,10 @@ public class User
     public string? Email { get; set; }
     public int? RoleId { get; set; }
 
+    // Simple authentication fields
+    public string? Username { get; set; }
+    public string? PasswordHash { get; set; }
+
     public virtual Role? Role { get; set; }
     public virtual ICollection<Login> Logins { get; set; } = new List<Login>();
 }
