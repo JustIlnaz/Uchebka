@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+        x:Class="AutoService.Views.CarEditWindow"
+        Title="Автомобиль">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
+        <TextBlock Text="Клиент" Grid.Row="0"/>
+        <ComboBox Name="ClientCombo" Grid.Row="0" Margin="80,0,0,0" />
+
+        <TextBlock Text="Марка" Grid.Row="1"/>
+        <ComboBox Name="MakeCombo" Grid.Row="1" Margin="80,0,0,0" />
+
+        <TextBlock Text="Модель" Grid.Row="2"/>
+        <TextBox Name="ModelText" Grid.Row="2" Margin="80,0,0,0" />
+
+        <TextBlock Text="Гос. номер" Grid.Row="3"/>
+        <TextBox Name="RegText" Grid.Row="3" Margin="80,0,0,0" />
+
+        <TextBlock Text="Пробег" Grid.Row="4"/>
+        <TextBox Name="MileageText" Grid.Row="4" Margin="80,0,0,0" />
+
+        <Button Content="Сохранить" Grid.Row="5" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+    </Grid>
+</Window>

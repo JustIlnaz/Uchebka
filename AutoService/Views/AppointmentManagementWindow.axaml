@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="using:AutoService.Data"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+        x:Class="AutoService.Views.AppointmentManagementWindow"
+        Title="Записи на обслуживание">
+
+    <Grid RowDefinitions="*, Auto" Margin="10">
+        <ListBox Name="AppointmentsListBox" Grid.Row="0" DoubleTapped="ListBox_DoubleTapped">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="data:Appointment">
+                    <Border Padding="6" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="{Binding Client.FullName}" Width="180" />
+                            <TextBlock Text="{Binding Car.RegistrationNumber}" Width="120" />
+                            <TextBlock Text="{Binding Service.Name}" Width="180" />
+                            <TextBlock Text="{Binding ScheduledAt, StringFormat='dd.MM.yyyy HH:mm'}" Width="140" />
+                            <TextBlock Text="{Binding Status}" Width="120" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="Добавить запись" Click="AddButton_Click" Margin="0,0,8,0" />
+        </StackPanel>
+    </Grid>
+</Window>

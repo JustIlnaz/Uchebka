@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="using:AutoService.Data"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+        x:Class="AutoService.Views.WorkOrderManagementWindow"
+        Title="Заказ-наряды">
+
+    <Grid RowDefinitions="*, Auto" Margin="10">
+        <ListBox Name="WorkOrdersListBox" Grid.Row="0" DoubleTapped="ListBox_DoubleTapped">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="data:WorkOrder">
+                    <Border Padding="6" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="{Binding Id, StringFormat='№{0}'}" Width="60" />
+                            <TextBlock Text="{Binding Appointment.Car.RegistrationNumber}" Width="120" />
+                            <TextBlock Text="{Binding Mechanic.User.FullName}" Width="180" />
+                            <TextBlock Text="{Binding Status}" Width="120" />
+                            <TextBlock Text="{Binding TotalCost, StringFormat='{}{0:C}'}" Width="120" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="Создать заказ-наряд" Click="AddButton_Click" Margin="0,0,8,0" />
+        </StackPanel>
+    </Grid>
+</Window>

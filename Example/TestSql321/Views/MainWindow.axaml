@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TestSql321.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TestSql321.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TestSql321">
+	<Grid RowDefinitions="*, Auto">
+		<DataGrid ItemsSource="{Binding Users}" IsReadOnly="True" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers" Grid.Row="0">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
+				<DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+				<DataGridTextColumn Header="Desctiption" Binding="{Binding Description}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button Content="Добавление" Grid.Row="1" Click="Button_Click"/>
+	</Grid>
+</Window>

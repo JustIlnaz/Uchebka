@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="500"
+        x:Class="AutoService.Views.WorkOrderEditWindow"
+        Title="Заказ-наряд">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
+        <TextBlock Text="Запись" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox Name="AppointmentCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Механик" Grid.Row="1" Grid.Column="0"/>
+        <ComboBox Name="MechanicCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Статус" Grid.Row="2" Grid.Column="0"/>
+        <ComboBox Name="StatusCombo" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Итоговая стоимость" Grid.Row="3" Grid.Column="0"/>
+        <TextBox Name="TotalCostText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
+
+        <!-- Services section -->
+        <TextBlock Text="Услуга" Grid.Row="4" Grid.Column="0"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="8">
+            <ComboBox Name="ServiceCombo" Width="220" />
+            <TextBox Name="ServiceQtyText" Width="60" Watermark="Кол-во" />
+            <Button Content="Добавить услугу" Click="AddService_Click" />
+        </StackPanel>
+
+        <ListBox Name="ServicesListBox" Grid.Row="5" Grid.ColumnSpan="2" Height="80" />
+
+        <!-- Parts section -->
+        <TextBlock Text="Запчасть" Grid.Row="6" Grid.Column="0"/>
+        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Spacing="8">
+            <ComboBox Name="PartCombo" Width="220" />
+            <TextBox Name="PartQtyText" Width="60" Watermark="Кол-во" />
+            <Button Content="Добавить запчасть" Click="AddPart_Click" />
+        </StackPanel>
+
+        <ListBox Name="PartsListBox" Grid.Row="7" Grid.ColumnSpan="2" Height="80" />
+
+        <Button Content="Сохранить" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+    </Grid>
+</Window>
