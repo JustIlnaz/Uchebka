@@ -69,7 +69,7 @@ public partial class WorkOrderEditWindow : Window
         }
     }
 
-    public void AddService_Click(object sender, RoutedEventArgs e)
+    public void AddService_Click(object? sender, RoutedEventArgs e)
     {
         var service = ServiceCombo.SelectedItem as Service;
         if (service == null) return;
@@ -80,18 +80,25 @@ public partial class WorkOrderEditWindow : Window
         ServicesListBox.ItemsSource = _tempServicesDisplay.ToList();
     }
 
-    public void AddPart_Click(object sender, RoutedEventArgs e)
+    public void AddPart_Click(object? sender, RoutedEventArgs e)
     {
         var part = PartCombo.SelectedItem as Part;
         if (part == null) return;
         var qty = int.TryParse(PartQtyText.Text, out var q) ? q : 1;
+
+        // Check stock availability
+        if (part.QuantityInStock < qty)
+        {
+            // Simple feedback - could show dialog
+            return;
+        }
 
         _tempParts.Add(new WorkOrderPart { PartId = part.Id, Quantity = qty, Price = part.SalePrice });
         _tempPartsDisplay.Add($"{part.Sku ?? part.Id.ToString()} x{qty}");
         PartsListBox.ItemsSource = _tempPartsDisplay.ToList();
     }
 
-    public void Save_Click(object sender, RoutedEventArgs e)
+    public void Save_Click(object? sender, RoutedEventArgs e)
     {
         using var db = new AppDbContext();
 
@@ -115,23 +122,42 @@ public partial class WorkOrderEditWindow : Window
                 thisWorkOrder.Status = status;
                 thisWorkOrder.TotalCost = totalCost;
 
+                // Restore stock for old parts before removing
+                var oldParts = db.WorkOrderParts.Where(x => x.WorkOrderId == id).ToList();
+                foreach (var oldPart in oldParts)
+                {
+                    var part = db.Parts.FirstOrDefault(p => p.Id == oldPart.PartId);
+                    if (part != null)
+                    {
+                        part.QuantityInStock += oldPart.Quantity;
+                    }
+                }
+
                 // Replace existing services and parts
                 var oldServices = db.WorkOrderServices.Where(x => x.WorkOrderId == id).ToList();
                 if (oldServices.Any()) db.WorkOrderServices.RemoveRange(oldServices);
 
-                var oldParts = db.WorkOrderParts.Where(x => x.WorkOrderId == id).ToList();
                 if (oldParts.Any()) db.WorkOrderParts.RemoveRange(oldParts);
 
-                // Add new
+                // Add new services
                 foreach (var s in _tempServices)
                 {
                     s.WorkOrderId = id;
                     db.WorkOrderServices.Add(s);
                 }
+
+                // Add new parts and decrement stock
                 foreach (var p in _tempParts)
                 {
                     p.WorkOrderId = id;
                     db.WorkOrderParts.Add(p);
+
+                    // Decrement stock
+                    var part = db.Parts.FirstOrDefault(x => x.Id == p.PartId);
+                    if (part != null)
+                    {
+                        part.QuantityInStock -= p.Quantity;
+                    }
                 }
             }
         }
@@ -157,6 +183,13 @@ public partial class WorkOrderEditWindow : Window
             {
                 p.WorkOrderId = newWorkOrder.Id;
                 db.WorkOrderParts.Add(p);
+
+                // Decrement stock
+                var part = db.Parts.FirstOrDefault(x => x.Id == p.PartId);
+                if (part != null)
+                {
+                    part.QuantityInStock -= p.Quantity;
+                }
             }
         }
 

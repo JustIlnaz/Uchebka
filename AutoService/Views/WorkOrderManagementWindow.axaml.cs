@@ -50,4 +50,15 @@ public partial class WorkOrderManagementWindow : Window
         WorkOrderVariableData.SelectedWorkOrder = null;
         LoadWorkOrders();
     }
+
+    private async void InvoiceButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var workOrder = WorkOrdersListBox.SelectedItem as WorkOrder;
+        if (workOrder == null) return;
+
+        var win = new InvoiceWindow();
+        win.SetWorkOrder(workOrder);
+        await win.ShowDialog(this);
+        LoadWorkOrders();
+    }
 }

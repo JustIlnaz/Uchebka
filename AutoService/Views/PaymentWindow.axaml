@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="250"
+        x:Class="AutoService.Views.PaymentWindow"
+        Title="Платёж">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
+        <TextBlock Text="Сумма:" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="AmountText" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Способ оплаты:" Grid.Row="1" Grid.Column="0"/>
+        <ComboBox x:Name="MethodCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Номер транзакции:" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="TransactionText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Статус:" Grid.Row="3" Grid.Column="0"/>
+        <ComboBox x:Name="StatusCombo" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
+
+        <Button Content="Сохранить" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="350"
+        x:Class="AutoService.Views.InvoiceWindow"
+        Title="Счёт">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
+        <TextBlock Text="Заказ-наряд:" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock x:Name="WorkOrderText" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Сумма до скидки:" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="AmountBeforeDiscountText" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Скидка:" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="DiscountText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Налог:" Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="TaxText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
+
+        <TextBlock Text="Итого:" Grid.Row="4" Grid.Column="0"/>
+        <TextBlock x:Name="TotalAmountText" Grid.Row="4" Grid.Column="1" Margin="8,0,0,0" FontWeight="Bold" />
+
+        <TextBlock Text="Статус:" Grid.Row="5" Grid.Column="0"/>
+        <ComboBox x:Name="StatusCombo" Grid.Row="5" Grid.Column="1" Margin="8,0,0,0" />
+
+        <Button Content="Сохранить счёт" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Добавить платёж" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="AddPayment_Click" />
+    </Grid>
+</Window>

@@ -13,6 +13,37 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         LoadClients();
+        ApplyRoleVisibility();
+    }
+
+    private void ApplyRoleVisibility()
+    {
+        var user = UserSession.CurrentUser;
+        if (user == null) return;
+
+        // Simple role check by RoleId (1=Admin, 2=Mechanic, 3=Manager)
+        // If no role assigned, show all (for testing)
+        if (user.RoleId == null) return;
+
+        switch (user.RoleId)
+        {
+            case 1: // Admin - full access
+                break;
+            case 2: // Mechanic - limited access
+                AddClientButton.IsVisible = false;
+                ManageCarsButton.IsVisible = false;
+                ManageAppointmentsButton.IsVisible = false;
+                ManageServicesButton.IsVisible = false;
+                ManagePartsButton.IsVisible = false;
+                break;
+            case 3: // Manager - read-only mostly
+                AddClientButton.IsVisible = false;
+                ManageCarsButton.IsVisible = false;
+                ManageAppointmentsButton.IsVisible = false;
+                ManageServicesButton.IsVisible = false;
+                ManagePartsButton.IsVisible = false;
+                break;
+        }
     }
 
     private void LoadClients()
