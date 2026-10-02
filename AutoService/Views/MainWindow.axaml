@@ -41,7 +41,9 @@
             <Button x:Name="ManageAppointmentsButton" Content="Записи на обслуживание" Click="ManageAppointments_Click" Margin="0,0,8,0" />
             <Button x:Name="ManageWorkOrdersButton" Content="Заказ-наряды" Click="ManageWorkOrders_Click" Margin="0,0,8,0" />
             <Button x:Name="ManageServicesButton" Content="Услуги" Click="ManageServices_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManagePartsButton" Content="Запчасти" Click="ManageParts_Click" />
+            <Button x:Name="ManagePartsButton" Content="Запчасти" Click="ManageParts_Click" Margin="0,0,8,0" />
+            <Button x:Name="ManageUsersButton" Content="Пользователи" Click="ManageUsers_Click" Margin="0,0,8,0" />
+            <Button x:Name="ManageRolesButton" Content="Роли" Click="ManageRoles_Click" />
         </StackPanel>
     </Grid>
 

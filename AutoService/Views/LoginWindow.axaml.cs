@@ -19,7 +19,7 @@ public partial class LoginWindow : Window
         var password = PasswordText.Text ?? string.Empty;
 
         using var db = new AppDbContext();
-        var user = db.Users.FirstOrDefault(u => u.Username == username && u.PasswordHash == password);
+        var user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
         if (user == null)
         {
             // simple feedback - real app should show dialog
@@ -42,7 +42,7 @@ public partial class LoginWindow : Window
         using var db = new AppDbContext();
         if (db.Users.Any(u => u.Username == username)) return; // already exists
 
-        var newUser = new User { Username = username, PasswordHash = password, FullName = username };
+        var newUser = new User { Username = username, Password = password, FullName = username };
         db.Users.Add(newUser);
         db.SaveChanges();
 

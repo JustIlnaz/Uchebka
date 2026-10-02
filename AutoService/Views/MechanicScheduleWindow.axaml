@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="using:AutoService.Data"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        x:Class="AutoService.Views.MechanicScheduleWindow"
+        Title="Расписание механика">
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="8">
+        <TextBlock x:Name="MechanicNameText" Grid.Row="0" FontWeight="Bold" Margin="0,0,0,8"/>
+
+        <ListBox x:Name="ScheduleListBox" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="data:MechanicSchedule">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <TextBlock Text="{Binding Date, StringFormat='dd.MM.yyyy'}" Width="100" />
+                        <TextBlock Text="{Binding StartTime}" Width="80" />
+                        <TextBlock Text="{Binding EndTime}" Width="80" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
+            <TextBox x:Name="DateText" Width="110" Watermark="дд.мм.гггг" />
+            <TextBox x:Name="StartText" Width="70" Watermark="чч:мм" />
+            <TextBox x:Name="EndText" Width="70" Watermark="чч:мм" />
+            <Button Content="Добавить" Click="AddButton_Click" />
+            <Button Content="Удалить" Click="DeleteButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

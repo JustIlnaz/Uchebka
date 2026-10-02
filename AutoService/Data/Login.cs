@@ -1,6 +1,11 @@
-// Legacy scaffolded file moved to a different namespace to avoid duplicate definitions.
-// The full domain entities are defined in Entities.cs under AutoService.Data.
+namespace AutoService.Data;
 
-namespace AutoService.Legacy;
+public class Login
+{
+    public int Id { get; set; }
+    public string? LoginName { get; set; }
+    public string? Password { get; set; }
+    public int? UserId { get; set; }
 
-public class LegacyLoginPlaceholder { }
+    public virtual User? User { get; set; }
+}

@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+        x:Class="AutoService.Views.MechanicServicesWindow"
+        Title="Услуги механика">
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="8">
+        <TextBlock x:Name="MechanicNameText" Grid.Row="0" FontWeight="Bold" Margin="0,0,0,8"/>
+
+        <ListBox x:Name="AssignedListBox" Grid.Row="1" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
+            <ComboBox x:Name="ServiceCombo" Width="220" />
+            <Button Content="Добавить" Click="AddButton_Click" />
+            <Button Content="Убрать выбранную" Click="RemoveButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
