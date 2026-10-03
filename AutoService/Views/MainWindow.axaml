@@ -15,7 +15,7 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto, *, Auto" Margin="8">
+    <Grid RowDefinitions="Auto, *, Auto, Auto, Auto" Margin="8">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
             <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,8,0" />
             <TextBox x:Name="SearchText" Width="200" KeyUp="SearchText_KeyUp" />
@@ -35,15 +35,32 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <Button x:Name="AddClientButton" Content="Добавить клиента" Click="AddButton_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManageCarsButton" Content="Управление автомобилями" Click="ManageCars_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManageAppointmentsButton" Content="Записи на обслуживание" Click="ManageAppointments_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManageWorkOrdersButton" Content="Заказ-наряды" Click="ManageWorkOrders_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManageServicesButton" Content="Услуги" Click="ManageServices_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManagePartsButton" Content="Запчасти" Click="ManageParts_Click" Margin="0,0,8,0" />
-            <Button x:Name="ManageUsersButton" Content="Пользователи" Click="ManageUsers_Click" Margin="0,0,8,0" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
+            <Button Content="? Назад" Click="PrevPage_Click" />
+            <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
+            <Button Content="Вперёд ?" Click="NextPage_Click" />
+            <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>50</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Spacing="8">
+            <Button x:Name="AddClientButton" Content="Добавить клиента" Click="AddButton_Click" />
+            <Button x:Name="ManageCarsButton" Content="Автомобили" Click="ManageCars_Click" />
+            <Button x:Name="ManageAppointmentsButton" Content="Записи на обслуживание" Click="ManageAppointments_Click" />
+            <Button x:Name="ManageWorkOrdersButton" Content="Заказ-наряды" Click="ManageWorkOrders_Click" />
+            <Button x:Name="ManageServicesButton" Content="Услуги" Click="ManageServices_Click" />
+            <Button x:Name="ManagePartsButton" Content="Запчасти" Click="ManageParts_Click" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Spacing="8">
+            <Button x:Name="ManageUsersButton" Content="Пользователи" Click="ManageUsers_Click" />
             <Button x:Name="ManageRolesButton" Content="Роли" Click="ManageRoles_Click" />
+            <Button x:Name="ManageMechanicsButton" Content="Механики" Click="ManageMechanics_Click" />
+            <Button x:Name="ReviewsButton" Content="Отзывы" Click="Reviews_Click" />
+            <Button x:Name="AnalyticsButton" Content="Аналитика" Click="Analytics_Click" />
         </StackPanel>
     </Grid>
 

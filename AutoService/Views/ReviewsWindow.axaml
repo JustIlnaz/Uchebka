@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="using:AutoService.Data"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
+        x:Class="AutoService.Views.ReviewsWindow"
+        Title="Отзывы клиентов">
+
+    <Grid RowDefinitions="*, Auto" Margin="10">
+        <ListBox x:Name="ReviewsListBox" Grid.Row="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="data:Review">
+                    <Border Padding="6" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <TextBlock Text="{Binding Client.FullName}" FontWeight="Bold" Width="200" />
+                                <TextBlock Text="{Binding Rating, StringFormat='Оценка: {0}/5'}" Width="100" />
+                                <TextBlock Text="{Binding CreatedAt, StringFormat='dd.MM.yyyy'}" Width="100" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
+            <Button Content="Добавить отзыв" Click="AddButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

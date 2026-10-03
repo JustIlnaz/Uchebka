@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+        x:Class="AutoService.Views.AnalyticsWindow"
+        Title="Аналитика">
+
+    <Grid RowDefinitions="Auto, Auto, *" Margin="10">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+            <Button Content="Общая статистика" Click="SummaryButton_Click" />
+            <Button Content="Выручка по месяцам" Click="RevenueButton_Click" />
+            <Button Content="Популярные услуги" Click="TopServicesButton_Click" />
+            <Button Content="Загруженность механиков" Click="MechanicLoadButton_Click" />
+            <Button Content="Низкий остаток запчастей" Click="LowStockButton_Click" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+            <Button Content="Услуги дороже средней" Click="AboveAvgServicesButton_Click" />
+            <Button Content="Постоянные клиенты" Click="RepeatClientsButton_Click" />
+            <Button Content="Механики выше среднего" Click="AboveAvgMechanicsButton_Click" />
+            <Button Content="Выручка ROLLUP" Click="RollupButton_Click" />
+            <Button Content="Заказы CUBE" Click="CubeButton_Click" />
+        </StackPanel>
+
+        <DataGrid x:Name="ResultsGrid" Grid.Row="2" AutoGenerateColumns="True" IsReadOnly="True" />
+    </Grid>
+</Window>

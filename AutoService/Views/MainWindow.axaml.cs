@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia;
+using System;
 using System.Linq;
 using AutoService.Data;
 using AutoService.Views;
@@ -10,9 +11,14 @@ namespace AutoService.Views;
 
 public partial class MainWindow : Window
 {
+    private int _page = 0;
+    private int _pageSize = 10;
+    private int _totalCount = 0;
+
     public MainWindow()
     {
         InitializeComponent();
+        PageSizeCombo.SelectedIndex = 0;
         LoadClients();
         ApplyRoleVisibility();
     }
@@ -21,6 +27,33 @@ public partial class MainWindow : Window
     {
         var user = UserSession.CurrentUser;
         if (user == null) return;
+
+        void SetMechanic()
+        {
+            AddClientButton.IsVisible = false;
+            ManageCarsButton.IsVisible = false;
+            ManageAppointmentsButton.IsVisible = false;
+            ManageServicesButton.IsVisible = false;
+            ManagePartsButton.IsVisible = false;
+            ManageUsersButton.IsVisible = false;
+            ManageRolesButton.IsVisible = false;
+            ManageMechanicsButton.IsVisible = false;
+            ReviewsButton.IsVisible = false;
+            AnalyticsButton.IsVisible = false;
+        }
+
+        void SetManager()
+        {
+            AddClientButton.IsVisible = false;
+            ManageCarsButton.IsVisible = false;
+            ManageAppointmentsButton.IsVisible = false;
+            ManageServicesButton.IsVisible = false;
+            ManagePartsButton.IsVisible = false;
+            ManageUsersButton.IsVisible = false;
+            ManageRolesButton.IsVisible = false;
+            ManageMechanicsButton.IsVisible = false;
+            // Руководителю доступны: Отзывы, Аналитика
+        }
 
         // Prefer string RoleName if present (e.g. "admin", "mechanic", "manager")
         if (!string.IsNullOrWhiteSpace(user.RoleName))
@@ -33,19 +66,11 @@ public partial class MainWindow : Window
                     // full access
                     break;
                 case "mechanic":
-                    AddClientButton.IsVisible = false;
-                    ManageCarsButton.IsVisible = false;
-                    ManageAppointmentsButton.IsVisible = false;
-                    ManageServicesButton.IsVisible = false;
-                    ManagePartsButton.IsVisible = false;
+                    SetMechanic();
                     break;
                 case "manager":
                 case "lead":
-                    AddClientButton.IsVisible = false;
-                    ManageCarsButton.IsVisible = false;
-                    ManageAppointmentsButton.IsVisible = false;
-                    ManageServicesButton.IsVisible = false;
-                    ManagePartsButton.IsVisible = false;
+                    SetManager();
                     break;
             }
 
@@ -59,19 +84,11 @@ public partial class MainWindow : Window
         {
             case 1: // Admin - full access
                 break;
-            case 2: // Mechanic - limited access
-                AddClientButton.IsVisible = false;
-                ManageCarsButton.IsVisible = false;
-                ManageAppointmentsButton.IsVisible = false;
-                ManageServicesButton.IsVisible = false;
-                ManagePartsButton.IsVisible = false;
+            case 2: // Mechanic
+                SetMechanic();
                 break;
-            case 3: // Manager - read-only mostly
-                AddClientButton.IsVisible = false;
-                ManageCarsButton.IsVisible = false;
-                ManageAppointmentsButton.IsVisible = false;
-                ManageServicesButton.IsVisible = false;
-                ManagePartsButton.IsVisible = false;
+            case 3: // Manager
+                SetManager();
                 break;
         }
     }
@@ -81,8 +98,14 @@ public partial class MainWindow : Window
         try
         {
             using var db = new AppDbContext();
-            var clients = db.Clients.ToList();
+            _totalCount = db.Clients.Count();
+            var clients = db.Clients
+                .OrderBy(c => c.FullName)
+                .Skip(_page * _pageSize)
+                .Take(_pageSize)
+                .ToList();
             ClientsListBox.ItemsSource = clients;
+            UpdatePageInfo();
         }
         catch
         {
@@ -90,34 +113,66 @@ public partial class MainWindow : Window
         }
     }
 
-    // New search handler referenced from XAML; filters clients by name, phone or email
-    private void SearchText_KeyUp(object? sender, KeyEventArgs e)
+    private void UpdatePageInfo()
     {
-        var tb = sender as TextBox;
-        var query = tb?.Text?.Trim();
+        var totalPages = Math.Max(1, (int)Math.Ceiling(_totalCount / (double)_pageSize));
+        PageInfoText.Text = $"Стр. {_page + 1} из {totalPages} ({_totalCount} записей)";
+    }
 
+    private void PrevPage_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        if (_page > 0) { _page--; ApplySearch(); }
+    }
+
+    private void NextPage_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var totalPages = (int)Math.Ceiling(_totalCount / (double)_pageSize);
+        if (_page < totalPages - 1) { _page++; ApplySearch(); }
+    }
+
+    private void PageSize_Changed(object? sender, SelectionChangedEventArgs e)
+    {
+        if (PageSizeCombo.SelectedItem is ComboBoxItem item &&
+            int.TryParse(item.Content?.ToString(), out var size))
+        {
+            _pageSize = size;
+            _page = 0;
+            ApplySearch();
+        }
+    }
+
+    private void ApplySearch()
+    {
+        var query = SearchText.Text?.Trim();
         try
         {
             using var db = new AppDbContext();
-            if (string.IsNullOrWhiteSpace(query))
+            IQueryable<Client> q = db.Clients;
+            if (!string.IsNullOrWhiteSpace(query))
             {
-                ClientsListBox.ItemsSource = db.Clients.ToList();
+                var s = query.ToLower();
+                q = q.Where(c => (c.FullName != null && c.FullName.ToLower().Contains(s))
+                              || (c.Phone != null && c.Phone.ToLower().Contains(s))
+                              || (c.Email != null && c.Email.ToLower().Contains(s)));
             }
-            else
-            {
-                var q = query.ToLower();
-                var results = db.Clients
-                    .Where(c => (c.FullName != null && c.FullName.ToLower().Contains(q))
-                             || (c.Phone != null && c.Phone.ToLower().Contains(q))
-                             || (c.Email != null && c.Email.ToLower().Contains(q)))
-                    .ToList();
-                ClientsListBox.ItemsSource = results;
-            }
+            _totalCount = q.Count();
+            ClientsListBox.ItemsSource = q
+                .OrderBy(c => c.FullName)
+                .Skip(_page * _pageSize)
+                .Take(_pageSize)
+                .ToList();
+            UpdatePageInfo();
         }
         catch
         {
-            // ignore errors for now
         }
+    }
+
+    // New search handler referenced from XAML; filters clients by name, phone or email
+    private void SearchText_KeyUp(object? sender, KeyEventArgs e)
+    {
+        _page = 0;
+        ApplySearch();
     }
 
     private async void AddButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -180,6 +235,24 @@ public partial class MainWindow : Window
     private async void ManageUsers_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var win = new UserManagementWindow();
+        await win.ShowDialog(this);
+    }
+
+    private async void ManageMechanics_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var win = new MechanicManagementWindow();
+        await win.ShowDialog(this);
+    }
+
+    private async void Reviews_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var win = new ReviewsWindow();
+        await win.ShowDialog(this);
+    }
+
+    private async void Analytics_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var win = new AnalyticsWindow();
         await win.ShowDialog(this);
     }
 }

@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="350"
+        x:Class="AutoService.Views.ReviewEditWindow"
+        Title="Новый отзыв">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
+        <TextBlock Text="Клиент:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox x:Name="ClientCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,8" />
+
+        <TextBlock Text="Заказ-наряд:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox x:Name="WorkOrderCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,8" />
+
+        <TextBlock Text="Оценка (1-5):" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <NumericUpDown x:Name="RatingInput" Grid.Row="2" Grid.Column="1" Margin="8,0,0,8" Minimum="1" Maximum="5" Value="5" />
+
+        <TextBlock Text="Комментарий:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CommentText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,8" AcceptsReturn="True" Height="100" TextWrapping="Wrap" />
+
+        <Button Content="Сохранить" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+    </Grid>
+</Window>

@@ -7,8 +7,14 @@
         x:Class="AutoService.Views.PartManagementWindow"
         Title="Запчасти">
 
-    <Grid RowDefinitions="*, Auto" Margin="10">
-        <ListBox Name="PartsListBox" Grid.Row="0" DoubleTapped="ListBox_DoubleTapped">
+    <Grid RowDefinitions="Auto, *, Auto, Auto" Margin="10">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" Spacing="8">
+            <TextBlock Text="Поставщик:" VerticalAlignment="Center" />
+            <ComboBox x:Name="SupplierCombo" Width="180" SelectionChanged="Filter_SelectionChanged" />
+            <CheckBox x:Name="LowStockCheck" Content="Низкий остаток" IsCheckedChanged="Filter_SelectionChanged" />
+        </StackPanel>
+
+        <ListBox Name="PartsListBox" Grid.Row="1" DoubleTapped="ListBox_DoubleTapped">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="data:Part">
                     <Border Padding="6" BorderBrush="#DDD" BorderThickness="0,0,0,1">
@@ -23,7 +29,18 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
+            <Button Content="? Назад" Click="PrevPage_Click" />
+            <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
+            <Button Content="Вперёд ?" Click="NextPage_Click" />
+            <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>50</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
             <Button Content="Добавить запчасть" Click="AddButton_Click" Margin="0,0,8,0" />
         </StackPanel>
     </Grid>
