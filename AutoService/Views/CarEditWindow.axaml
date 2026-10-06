@@ -1,27 +1,27 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
         x:Class="AutoService.Views.CarEditWindow"
-        Title="Àâòîìîáèëü">
+        Title="ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Êëèåíò" Grid.Row="0"/>
+        <TextBlock Text="ÐšÐ»Ð¸ÐµÐ½Ñ‚" Grid.Row="0"/>
         <ComboBox Name="ClientCombo" Grid.Row="0" Margin="80,0,0,0" />
 
-        <TextBlock Text="Ìàðêà" Grid.Row="1"/>
+        <TextBlock Text="ÐœÐ°Ñ€ÐºÐ°" Grid.Row="1"/>
         <ComboBox Name="MakeCombo" Grid.Row="1" Margin="80,0,0,0" />
 
-        <TextBlock Text="Ìîäåëü" Grid.Row="2"/>
+        <TextBlock Text="ÐœÐ¾Ð´ÐµÐ»ÑŒ" Grid.Row="2"/>
         <TextBox Name="ModelText" Grid.Row="2" Margin="80,0,0,0" />
 
-        <TextBlock Text="Ãîñ. íîìåð" Grid.Row="3"/>
+        <TextBlock Text="Ð“Ð¾Ñ. Ð½Ð¾Ð¼ÐµÑ€" Grid.Row="3"/>
         <TextBox Name="RegText" Grid.Row="3" Margin="80,0,0,0" />
 
-        <TextBlock Text="Ïðîáåã" Grid.Row="4"/>
+        <TextBlock Text="ÐŸÑ€Ð¾Ð±ÐµÐ³" Grid.Row="4"/>
         <TextBox Name="MileageText" Grid.Row="4" Margin="80,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="5" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="5" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

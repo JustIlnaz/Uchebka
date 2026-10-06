@@ -1,33 +1,33 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
         x:Class="AutoService.Views.AppointmentEditWindow"
-        Title="Çàïèñü íà îáñëóæèâàíèå">
+        Title="Ð—Ð°Ð¿Ð¸ÑÑŒ Ð½Ð° Ð¾Ð±ÑÐ»ÑƒÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Êëèåíò" Grid.Row="0"/>
+        <TextBlock Text="ÐšÐ»Ð¸ÐµÐ½Ñ‚" Grid.Row="0"/>
         <ComboBox Name="ClientCombo" Grid.Row="0" Margin="120,0,0,0" />
 
-        <TextBlock Text="Àâòîìîáèëü" Grid.Row="1"/>
+        <TextBlock Text="ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ" Grid.Row="1"/>
         <ComboBox Name="CarCombo" Grid.Row="1" Margin="120,0,0,0" />
 
-        <TextBlock Text="Óñëóãà" Grid.Row="2"/>
+        <TextBlock Text="Ð£ÑÐ»ÑƒÐ³Ð°" Grid.Row="2"/>
         <ComboBox Name="ServiceCombo" Grid.Row="2" Margin="120,0,0,0" />
 
-        <TextBlock Text="Ìåõàíèê" Grid.Row="3"/>
+        <TextBlock Text="ÐœÐµÑ…Ð°Ð½Ð¸Ðº" Grid.Row="3"/>
         <ComboBox Name="MechanicCombo" Grid.Row="3" Margin="120,0,0,0" />
 
-        <TextBlock Text="Ðåìîíòíîå ìåñòî" Grid.Row="4"/>
+        <TextBlock Text="Ð ÐµÐ¼Ð¾Ð½Ñ‚Ð½Ð¾Ðµ Ð¼ÐµÑÑ‚Ð¾" Grid.Row="4"/>
         <ComboBox Name="RepairBayCombo" Grid.Row="4" Margin="120,0,0,0" />
 
-        <TextBlock Text="Äàòà è âðåìÿ" Grid.Row="5"/>
+        <TextBlock Text="Ð”Ð°Ñ‚Ð° Ð¸ Ð²Ñ€ÐµÐ¼Ñ" Grid.Row="5"/>
         <TextBox Name="ScheduledAtText" Grid.Row="5" Margin="120,0,0,0" Watermark="dd.MM.yyyy HH:mm" />
 
-        <TextBlock Text="Ñòàòóñ" Grid.Row="6"/>
+        <TextBlock Text="Ð¡Ñ‚Ð°Ñ‚ÑƒÑ" Grid.Row="6"/>
         <ComboBox Name="StatusCombo" Grid.Row="6" Margin="120,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="7" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="7" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

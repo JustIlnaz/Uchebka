@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +20,7 @@ public partial class MechanicServicesWindow : Window
 
         using var db = new AppDbContext();
         var mech = db.Mechanics.Include(x => x.User).FirstOrDefault(x => x.Id == _mechanicId);
-        MechanicNameText.Text = mech?.User?.FullName ?? $"Механик #{_mechanicId}";
+        MechanicNameText.Text = mech?.User?.FullName ?? $"РњРµС…Р°РЅРёРє #{_mechanicId}";
 
         ServiceCombo.ItemsSource = db.Services.ToList();
         LoadAssigned();

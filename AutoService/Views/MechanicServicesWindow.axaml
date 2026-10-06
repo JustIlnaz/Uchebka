@@ -1,10 +1,10 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
         x:Class="AutoService.Views.MechanicServicesWindow"
-        Title="Óñëóãè ìåõàíèêà">
+        Title="Ð£ÑÐ»ÑƒÐ³Ð¸ Ð¼ÐµÑ…Ð°Ð½Ð¸ÐºÐ°">
 
     <Grid RowDefinitions="Auto, *, Auto" Margin="8">
         <TextBlock x:Name="MechanicNameText" Grid.Row="0" FontWeight="Bold" Margin="0,0,0,8"/>
@@ -13,8 +13,8 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
             <ComboBox x:Name="ServiceCombo" Width="220" />
-            <Button Content="Äîáàâèòü" Click="AddButton_Click" />
-            <Button Content="Óáðàòü âûáðàííóþ" Click="RemoveButton_Click" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ" Click="AddButton_Click" />
+            <Button Content="Ð£Ð±Ñ€Ð°Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½ÑƒÑŽ" Click="RemoveButton_Click" />
         </StackPanel>
     </Grid>
 </Window>

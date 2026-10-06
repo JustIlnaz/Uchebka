@@ -1,24 +1,24 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="300"
         x:Class="AutoService.Views.ServiceEditWindow"
-        Title="Óñëóãà">
+        Title="Ð£ÑÐ»ÑƒÐ³Ð°">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Íàçâàíèå" Grid.Row="0"/>
+        <TextBlock Text="ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ" Grid.Row="0"/>
         <TextBox Name="NameText" Grid.Row="0" Margin="120,0,0,0" />
 
-        <TextBlock Text="Îïèñàíèå" Grid.Row="1"/>
+        <TextBlock Text="ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ" Grid.Row="1"/>
         <TextBox Name="DescriptionText" Grid.Row="1" Margin="120,0,0,0" />
 
-        <TextBlock Text="Áàçîâàÿ ñòîèìîñòü" Grid.Row="2"/>
+        <TextBlock Text="Ð‘Ð°Ð·Ð¾Ð²Ð°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ" Grid.Row="2"/>
         <TextBox Name="PriceText" Grid.Row="2" Margin="120,0,0,0" />
 
-        <TextBlock Text="Äëèòåëüíîñòü (ìèí)" Grid.Row="3"/>
+        <TextBlock Text="Ð”Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ (Ð¼Ð¸Ð½)" Grid.Row="3"/>
         <TextBox Name="DurationText" Grid.Row="3" Margin="120,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

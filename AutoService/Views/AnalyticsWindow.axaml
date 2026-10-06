@@ -1,26 +1,26 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
         x:Class="AutoService.Views.AnalyticsWindow"
-        Title="Àíàëèòèêà">
+        Title="ÐÐ½Ð°Ð»Ð¸Ñ‚Ð¸ÐºÐ°">
 
     <Grid RowDefinitions="Auto, Auto, *" Margin="10">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
-            <Button Content="Îáùàÿ ñòàòèñòèêà" Click="SummaryButton_Click" />
-            <Button Content="Âûðó÷êà ïî ìåñÿöàì" Click="RevenueButton_Click" />
-            <Button Content="Ïîïóëÿðíûå óñëóãè" Click="TopServicesButton_Click" />
-            <Button Content="Çàãðóæåííîñòü ìåõàíèêîâ" Click="MechanicLoadButton_Click" />
-            <Button Content="Íèçêèé îñòàòîê çàï÷àñòåé" Click="LowStockButton_Click" />
+            <Button Content="ÐžÐ±Ñ‰Ð°Ñ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ°" Click="SummaryButton_Click" />
+            <Button Content="Ð’Ñ‹Ñ€ÑƒÑ‡ÐºÐ° Ð¿Ð¾ Ð¼ÐµÑÑÑ†Ð°Ð¼" Click="RevenueButton_Click" />
+            <Button Content="ÐŸÐ¾Ð¿ÑƒÐ»ÑÑ€Ð½Ñ‹Ðµ ÑƒÑÐ»ÑƒÐ³Ð¸" Click="TopServicesButton_Click" />
+            <Button Content="Ð—Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½Ð½Ð¾ÑÑ‚ÑŒ Ð¼ÐµÑ…Ð°Ð½Ð¸ÐºÐ¾Ð²" Click="MechanicLoadButton_Click" />
+            <Button Content="ÐÐ¸Ð·ÐºÐ¸Ð¹ Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ðº Ð·Ð°Ð¿Ñ‡Ð°ÑÑ‚ÐµÐ¹" Click="LowStockButton_Click" />
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
-            <Button Content="Óñëóãè äîðîæå ñðåäíåé" Click="AboveAvgServicesButton_Click" />
-            <Button Content="Ïîñòîÿííûå êëèåíòû" Click="RepeatClientsButton_Click" />
-            <Button Content="Ìåõàíèêè âûøå ñðåäíåãî" Click="AboveAvgMechanicsButton_Click" />
-            <Button Content="Âûðó÷êà ROLLUP" Click="RollupButton_Click" />
-            <Button Content="Çàêàçû CUBE" Click="CubeButton_Click" />
+            <Button Content="Ð£ÑÐ»ÑƒÐ³Ð¸ Ð´Ð¾Ñ€Ð¾Ð¶Ðµ ÑÑ€ÐµÐ´Ð½ÐµÐ¹" Click="AboveAvgServicesButton_Click" />
+            <Button Content="ÐŸÐ¾ÑÑ‚Ð¾ÑÐ½Ð½Ñ‹Ðµ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ñ‹" Click="RepeatClientsButton_Click" />
+            <Button Content="ÐœÐµÑ…Ð°Ð½Ð¸ÐºÐ¸ Ð²Ñ‹ÑˆÐµ ÑÑ€ÐµÐ´Ð½ÐµÐ³Ð¾" Click="AboveAvgMechanicsButton_Click" />
+            <Button Content="Ð’Ñ‹Ñ€ÑƒÑ‡ÐºÐ° ROLLUP" Click="RollupButton_Click" />
+            <Button Content="Ð—Ð°ÐºÐ°Ð·Ñ‹ CUBE" Click="CubeButton_Click" />
         </StackPanel>
 
         <DataGrid x:Name="ResultsGrid" Grid.Row="2" AutoGenerateColumns="True" IsReadOnly="True" />

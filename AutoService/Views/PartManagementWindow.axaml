@@ -1,17 +1,17 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="using:AutoService.Data"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
         x:Class="AutoService.Views.PartManagementWindow"
-        Title="Çàï÷àñòè">
+        Title="Ð—Ð°Ð¿Ñ‡Ð°ÑÑ‚Ð¸">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto" Margin="10">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" Spacing="8">
-            <TextBlock Text="Ïîñòàâùèê:" VerticalAlignment="Center" />
+            <TextBlock Text="ÐŸÐ¾ÑÑ‚Ð°Ð²Ñ‰Ð¸Ðº:" VerticalAlignment="Center" />
             <ComboBox x:Name="SupplierCombo" Width="180" SelectionChanged="Filter_SelectionChanged" />
-            <CheckBox x:Name="LowStockCheck" Content="Íèçêèé îñòàòîê" IsCheckedChanged="Filter_SelectionChanged" />
+            <CheckBox x:Name="LowStockCheck" Content="ÐÐ¸Ð·ÐºÐ¸Ð¹ Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ðº" IsCheckedChanged="Filter_SelectionChanged" />
         </StackPanel>
 
         <ListBox Name="PartsListBox" Grid.Row="1" DoubleTapped="ListBox_DoubleTapped">
@@ -30,9 +30,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
-            <Button Content="? Íàçàä" Click="PrevPage_Click" />
+            <Button Content="? ÐÐ°Ð·Ð°Ð´" Click="PrevPage_Click" />
             <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
-            <Button Content="Âïåð¸ä ?" Click="NextPage_Click" />
+            <Button Content="Ð’Ð¿ÐµÑ€Ñ‘Ð´ ?" Click="NextPage_Click" />
             <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>20</ComboBoxItem>
@@ -41,7 +41,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <Button Content="Äîáàâèòü çàï÷àñòü" Click="AddButton_Click" Margin="0,0,8,0" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð·Ð°Ð¿Ñ‡Ð°ÑÑ‚ÑŒ" Click="AddButton_Click" Margin="0,0,8,0" />
         </StackPanel>
     </Grid>
 </Window>

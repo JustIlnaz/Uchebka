@@ -1,24 +1,24 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="350"
         x:Class="AutoService.Views.PartEditWindow"
-        Title="Çàï÷àñòü">
+        Title="Ð—Ð°Ð¿Ñ‡Ð°ÑÑ‚ÑŒ">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Ïîñòàâùèê" Grid.Row="0"/>
+        <TextBlock Text="ÐŸÐ¾ÑÑ‚Ð°Ð²Ñ‰Ð¸Ðº" Grid.Row="0"/>
         <ComboBox Name="SupplierCombo" Grid.Row="0" Margin="120,0,0,0" />
 
-        <TextBlock Text="Àðòèêóë" Grid.Row="1"/>
+        <TextBlock Text="ÐÑ€Ñ‚Ð¸ÐºÑƒÐ»" Grid.Row="1"/>
         <TextBox Name="SkuText" Grid.Row="1" Margin="120,0,0,0" />
 
-        <TextBlock Text="Öåíà ïðîäàæè" Grid.Row="2"/>
+        <TextBlock Text="Ð¦ÐµÐ½Ð° Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð¸" Grid.Row="2"/>
         <TextBox Name="SalePriceText" Grid.Row="2" Margin="120,0,0,0" />
 
-        <TextBlock Text="Êîëè÷åñòâî íà ñêëàäå" Grid.Row="3"/>
+        <TextBlock Text="ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð° ÑÐºÐ»Ð°Ð´Ðµ" Grid.Row="3"/>
         <TextBox Name="QuantityText" Grid.Row="3" Margin="120,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

@@ -1,21 +1,21 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
         x:Class="AutoService.Views.ClientEditWindow"
-        Title="Êëèåíò">
+        Title="ÐšÐ»Ð¸ÐµÐ½Ñ‚">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="ÔÈÎ:" Grid.Row="0"/>
+        <TextBlock Text="Ð¤Ð˜Ðž:" Grid.Row="0"/>
         <TextBox Name="FullNameText" Grid.Row="0" Margin="80,0,0,0" />
 
-        <TextBlock Text="Òåëåôîí:" Grid.Row="1"/>
+        <TextBlock Text="Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½:" Grid.Row="1"/>
         <TextBox Name="PhoneText" Grid.Row="1" Margin="80,0,0,0" />
 
         <TextBlock Text="Email:" Grid.Row="2"/>
         <TextBox Name="EmailText" Grid.Row="2" Margin="80,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="3" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="3" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

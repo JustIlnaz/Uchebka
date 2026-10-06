@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,16 +18,16 @@ public partial class AnalyticsWindow : Window
     {
         using var db = new AppDbContext();
         var totalOrders = db.WorkOrders.Count();
-        var completedOrders = db.WorkOrders.Count(w => w.Status == "Завершён");
+        var completedOrders = db.WorkOrders.Count(w => w.Status == "Р—Р°РІРµСЂС€С‘РЅ");
         var totalRevenue = db.Payments.Sum(p => p.Amount);
         var avgCheck = db.WorkOrders.Average(w => (decimal?)w.TotalCost) ?? 0;
 
         var stats = new List<SummaryStat>
         {
-            new() { Metric = "Всего заказов", Value = totalOrders.ToString() },
-            new() { Metric = "Завершено заказов", Value = completedOrders.ToString() },
-            new() { Metric = "Общая выручка", Value = totalRevenue.ToString("C") },
-            new() { Metric = "Средний чек", Value = avgCheck.ToString("C") }
+            new() { Metric = "Р’СЃРµРіРѕ Р·Р°РєР°Р·РѕРІ", Value = totalOrders.ToString() },
+            new() { Metric = "Р—Р°РІРµСЂС€РµРЅРѕ Р·Р°РєР°Р·РѕРІ", Value = completedOrders.ToString() },
+            new() { Metric = "РћР±С‰Р°СЏ РІС‹СЂСѓС‡РєР°", Value = totalRevenue.ToString("C") },
+            new() { Metric = "РЎСЂРµРґРЅРёР№ С‡РµРє", Value = avgCheck.ToString("C") }
         };
         ResultsGrid.ItemsSource = stats;
     }
@@ -95,7 +95,7 @@ public partial class AnalyticsWindow : Window
         ResultsGrid.ItemsSource = low;
     }
 
-    // Вложенный запрос: услуги, стоимость которых выше средней
+    // Р’Р»РѕР¶РµРЅРЅС‹Р№ Р·Р°РїСЂРѕСЃ: СѓСЃР»СѓРіРё, СЃС‚РѕРёРјРѕСЃС‚СЊ РєРѕС‚РѕСЂС‹С… РІС‹С€Рµ СЃСЂРµРґРЅРµР№
     private void AboveAvgServicesButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
@@ -108,7 +108,7 @@ public partial class AnalyticsWindow : Window
         ResultsGrid.ItemsSource = list;
     }
 
-    // Вложенный запрос: клиенты с несколькими обращениями
+    // Р’Р»РѕР¶РµРЅРЅС‹Р№ Р·Р°РїСЂРѕСЃ: РєР»РёРµРЅС‚С‹ СЃ РЅРµСЃРєРѕР»СЊРєРёРјРё РѕР±СЂР°С‰РµРЅРёСЏРјРё
     private void RepeatClientsButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
@@ -124,7 +124,7 @@ public partial class AnalyticsWindow : Window
         ResultsGrid.ItemsSource = list;
     }
 
-    // Вложенный запрос: механики, выполнившие больше среднего количества заказов
+    // Р’Р»РѕР¶РµРЅРЅС‹Р№ Р·Р°РїСЂРѕСЃ: РјРµС…Р°РЅРёРєРё, РІС‹РїРѕР»РЅРёРІС€РёРµ Р±РѕР»СЊС€Рµ СЃСЂРµРґРЅРµРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РєР°Р·РѕРІ
     private void AboveAvgMechanicsButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
@@ -147,7 +147,7 @@ public partial class AnalyticsWindow : Window
         ResultsGrid.ItemsSource = list;
     }
 
-    // ROLLUP: выручка по годам и месяцам с промежуточными итогами
+    // ROLLUP: РІС‹СЂСѓС‡РєР° РїРѕ РіРѕРґР°Рј Рё РјРµСЃСЏС†Р°Рј СЃ РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹РјРё РёС‚РѕРіР°РјРё
     private void RollupButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
@@ -162,13 +162,13 @@ public partial class AnalyticsWindow : Window
         ResultsGrid.ItemsSource = list;
     }
 
-    // CUBE: количество заказов и выручка по статусу заказа и механику
+    // CUBE: РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РєР°Р·РѕРІ Рё РІС‹СЂСѓС‡РєР° РїРѕ СЃС‚Р°С‚СѓСЃСѓ Р·Р°РєР°Р·Р° Рё РјРµС…Р°РЅРёРєСѓ
     private void CubeButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
         var list = db.Database.SqlQuery<CubeRow>($"""
-            SELECT COALESCE(w."Status", 'ИТОГО') AS "Status",
-                   COALESCE(u."FullName", 'Все механики') AS "Mechanic",
+            SELECT COALESCE(w."Status", 'РРўРћР“Рћ') AS "Status",
+                   COALESCE(u."FullName", 'Р’СЃРµ РјРµС…Р°РЅРёРєРё') AS "Mechanic",
                    COUNT(*) AS "Orders",
                    COALESCE(SUM(w."TotalCost"), 0) AS "Total"
             FROM "WorkOrders" w

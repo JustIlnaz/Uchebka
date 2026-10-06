@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using Avalonia.Interactivity;
 using AutoService.Data;
 using System;
@@ -13,8 +13,8 @@ public partial class PaymentWindow : Window
     public PaymentWindow()
     {
         InitializeComponent();
-        MethodCombo.ItemsSource = new[] { "Наличные", "Карта", "Перевод" };
-        StatusCombo.ItemsSource = new[] { "Ожидает", "Завершён", "Отменён" };
+        MethodCombo.ItemsSource = new[] { "РќР°Р»РёС‡РЅС‹Рµ", "РљР°СЂС‚Р°", "РџРµСЂРµРІРѕРґ" };
+        StatusCombo.ItemsSource = new[] { "РћР¶РёРґР°РµС‚", "Р—Р°РІРµСЂС€С‘РЅ", "РћС‚РјРµРЅС‘РЅ" };
         StatusCombo.SelectedIndex = 0;
     }
 
@@ -47,7 +47,7 @@ public partial class PaymentWindow : Window
         var invoice = db.Invoices.FirstOrDefault(i => i.Id == _invoice.Id);
         if (invoice != null && totalPaid >= invoice.TotalAmount)
         {
-            invoice.Status = "Оплачен";
+            invoice.Status = "РћРїР»Р°С‡РµРЅ";
         }
 
         db.SaveChanges();

@@ -1,19 +1,19 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="using:AutoService.Data"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
         x:Class="AutoService.Views.WorkOrderManagementWindow"
-        Title="Çàêàç-íàðÿäû">
+        Title="Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´Ñ‹">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto" Margin="10">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" Spacing="8">
-            <TextBlock Text="Ñòàòóñ:" VerticalAlignment="Center" />
+            <TextBlock Text="Ð¡Ñ‚Ð°Ñ‚ÑƒÑ:" VerticalAlignment="Center" />
             <ComboBox x:Name="StatusCombo" Width="150" SelectionChanged="Filter_SelectionChanged" />
-            <TextBlock Text="Ìåõàíèê:" VerticalAlignment="Center" />
+            <TextBlock Text="ÐœÐµÑ…Ð°Ð½Ð¸Ðº:" VerticalAlignment="Center" />
             <ComboBox x:Name="MechanicCombo" Width="180" SelectionChanged="Filter_SelectionChanged" />
-            <Button Content="Ñáðîñèòü" Click="ResetFilter_Click" />
+            <Button Content="Ð¡Ð±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ" Click="ResetFilter_Click" />
         </StackPanel>
 
         <ListBox Name="WorkOrdersListBox" Grid.Row="1" DoubleTapped="ListBox_DoubleTapped">
@@ -21,7 +21,7 @@
                 <DataTemplate x:DataType="data:WorkOrder">
                     <Border Padding="6" BorderBrush="#DDD" BorderThickness="0,0,0,1">
                         <StackPanel Orientation="Horizontal" Spacing="12">
-                            <TextBlock Text="{Binding Id, StringFormat='¹{0}'}" Width="60" />
+                            <TextBlock Text="{Binding Id, StringFormat='â„–{0}'}" Width="60" />
                             <TextBlock Text="{Binding Appointment.Car.RegistrationNumber}" Width="120" />
                             <TextBlock Text="{Binding Mechanic.User.FullName}" Width="180" />
                             <TextBlock Text="{Binding Status}" Width="120" />
@@ -33,9 +33,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
-            <Button Content="? Íàçàä" Click="PrevPage_Click" />
+            <Button Content="? ÐÐ°Ð·Ð°Ð´" Click="PrevPage_Click" />
             <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
-            <Button Content="Âïåð¸ä ?" Click="NextPage_Click" />
+            <Button Content="Ð’Ð¿ÐµÑ€Ñ‘Ð´ ?" Click="NextPage_Click" />
             <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>20</ComboBoxItem>
@@ -44,9 +44,9 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <Button Content="Ñ÷¸ò" Click="InvoiceButton_Click" Margin="0,0,8,0" />
-            <Button Content="Äèàãíîñòèêà" Click="InspectionButton_Click" Margin="0,0,8,0" />
-            <Button Content="Äîáàâèòü çàêàç-íàðÿä" Click="AddButton_Click" Margin="0,0,8,0" />
+            <Button Content="Ð¡Ñ‡Ñ‘Ñ‚" Click="InvoiceButton_Click" Margin="0,0,8,0" />
+            <Button Content="Ð”Ð¸Ð°Ð³Ð½Ð¾ÑÑ‚Ð¸ÐºÐ°" Click="InspectionButton_Click" Margin="0,0,8,0" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð·Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´" Click="AddButton_Click" Margin="0,0,8,0" />
         </StackPanel>
     </Grid>
 </Window>

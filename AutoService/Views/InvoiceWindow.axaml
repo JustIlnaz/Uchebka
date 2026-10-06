@@ -1,31 +1,31 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="350"
         x:Class="AutoService.Views.InvoiceWindow"
-        Title="Ñ÷¸ò">
+        Title="Ð¡Ñ‡Ñ‘Ñ‚">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
-        <TextBlock Text="Çàêàç-íàðÿä:" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´:" Grid.Row="0" Grid.Column="0"/>
         <TextBlock x:Name="WorkOrderText" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ñóììà äî ñêèäêè:" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Ð¡ÑƒÐ¼Ð¼Ð° Ð´Ð¾ ÑÐºÐ¸Ð´ÐºÐ¸:" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="AmountBeforeDiscountText" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ñêèäêà:" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Ð¡ÐºÐ¸Ð´ÐºÐ°:" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="DiscountText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Íàëîã:" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="ÐÐ°Ð»Ð¾Ð³:" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="TaxText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Èòîãî:" Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Ð˜Ñ‚Ð¾Ð³Ð¾:" Grid.Row="4" Grid.Column="0"/>
         <TextBlock x:Name="TotalAmountText" Grid.Row="4" Grid.Column="1" Margin="8,0,0,0" FontWeight="Bold" />
 
-        <TextBlock Text="Ñòàòóñ:" Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="Ð¡Ñ‚Ð°Ñ‚ÑƒÑ:" Grid.Row="5" Grid.Column="0"/>
         <ComboBox x:Name="StatusCombo" Grid.Row="5" Grid.Column="1" Margin="8,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü ñ÷¸ò" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
-        <Button Content="Äîáàâèòü ïëàò¸æ" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="AddPayment_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÑÑ‡Ñ‘Ñ‚" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¿Ð»Ð°Ñ‚Ñ‘Ð¶" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="AddPayment_Click" />
     </Grid>
 </Window>

@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+Ôªøusing Avalonia.Controls;
 using Avalonia.Interactivity;
 using AutoService.Data;
 using AutoService.Models;
@@ -16,13 +16,13 @@ public partial class InvoiceWindow : Window
     public InvoiceWindow()
     {
         InitializeComponent();
-        StatusCombo.ItemsSource = new[] { "—ÓÁ‰‡Ì", "ŒÔÎ‡˜ÂÌ", "◊‡ÒÚË˜ÌÓ ÓÔÎ‡˜ÂÌ", "ŒÚÏÂÌ∏Ì" };
+        StatusCombo.ItemsSource = new[] { "–°–æ–∑–¥–∞–Ω", "–û–ø–ª–∞—á–µ–Ω", "–ß–∞—Å—Ç–∏—á–Ω–æ –æ–ø–ª–∞—á–µ–Ω", "–û—Ç–º–µ–Ω—ë–Ω" };
     }
 
     public void SetWorkOrder(WorkOrder workOrder)
     {
         _workOrder = workOrder;
-        WorkOrderText.Text = $"«‡Í‡Á #{workOrder.Id}";
+        WorkOrderText.Text = $"–ó–∞–∫–∞–∑ #{workOrder.Id}";
 
         using var db = new AppDbContext();
         _invoice = db.Invoices.FirstOrDefault(i => i.WorkOrderId == workOrder.Id);
@@ -67,7 +67,7 @@ public partial class InvoiceWindow : Window
         if (!decimal.TryParse(TaxText.Text, out var tax)) tax = 0;
 
         var total = amount - discount + tax;
-        var status = StatusCombo.SelectedItem as string ?? "—ÓÁ‰‡Ì";
+        var status = StatusCombo.SelectedItem as string ?? "–°–æ–∑–¥–∞–Ω";
 
         if (_invoice != null)
         {

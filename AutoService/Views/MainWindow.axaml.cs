@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia;
 using System;
@@ -52,7 +52,7 @@ public partial class MainWindow : Window
             ManageUsersButton.IsVisible = false;
             ManageRolesButton.IsVisible = false;
             ManageMechanicsButton.IsVisible = false;
-            // Руководителю доступны: Отзывы, Аналитика
+            // Р СѓРєРѕРІРѕРґРёС‚РµР»СЋ РґРѕСЃС‚СѓРїРЅС‹: РћС‚Р·С‹РІС‹, РђРЅР°Р»РёС‚РёРєР°
         }
 
         // Prefer string RoleName if present (e.g. "admin", "mechanic", "manager")
@@ -116,7 +116,7 @@ public partial class MainWindow : Window
     private void UpdatePageInfo()
     {
         var totalPages = Math.Max(1, (int)Math.Ceiling(_totalCount / (double)_pageSize));
-        PageInfoText.Text = $"Стр. {_page + 1} из {totalPages} ({_totalCount} записей)";
+        PageInfoText.Text = $"РЎС‚СЂ. {_page + 1} РёР· {totalPages} ({_totalCount} Р·Р°РїРёСЃРµР№)";
     }
 
     private void PrevPage_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

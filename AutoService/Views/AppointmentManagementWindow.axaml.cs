@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,7 @@ public partial class AppointmentManagementWindow : Window
     public AppointmentManagementWindow()
     {
         InitializeComponent();
-        StatusCombo.ItemsSource = new[] { "Запланирована", "Подтверждена", "Отменена", "Выполнена" };
+        StatusCombo.ItemsSource = new[] { "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°", "РџРѕРґС‚РІРµСЂР¶РґРµРЅР°", "РћС‚РјРµРЅРµРЅР°", "Р’С‹РїРѕР»РЅРµРЅР°" };
         PageSizeCombo.SelectedIndex = 0;
         LoadAppointments();
     }
@@ -62,7 +62,7 @@ public partial class AppointmentManagementWindow : Window
     private void UpdatePageInfo()
     {
         var totalPages = Math.Max(1, (int)Math.Ceiling(_totalCount / (double)_pageSize));
-        PageInfoText.Text = $"Стр. {_page + 1} из {totalPages} ({_totalCount} записей)";
+        PageInfoText.Text = $"РЎС‚СЂ. {_page + 1} РёР· {totalPages} ({_totalCount} Р·Р°РїРёСЃРµР№)";
     }
 
     private void PrevPage_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

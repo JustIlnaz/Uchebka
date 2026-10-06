@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ public partial class AppointmentEditWindow : Window
         ServiceCombo.ItemsSource = db.Services.ToList();
         MechanicCombo.ItemsSource = db.Mechanics.Include(m => m.User).ToList();
         RepairBayCombo.ItemsSource = db.RepairBays.ToList();
-        StatusCombo.ItemsSource = new[] { "Запланирована", "Подтверждена", "Отменена", "Выполнена" };
+        StatusCombo.ItemsSource = new[] { "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°", "РџРѕРґС‚РІРµСЂР¶РґРµРЅР°", "РћС‚РјРµРЅРµРЅР°", "Р’С‹РїРѕР»РЅРµРЅР°" };
 
         if (AppointmentVariableData.SelectedAppointment != null)
         {
@@ -71,7 +71,7 @@ public partial class AppointmentEditWindow : Window
                 MechanicId = mechanic?.Id,
                 RepairBayId = repairBay?.Id,
                 ScheduledAt = scheduledAt,
-                Status = status ?? "Запланирована",
+                Status = status ?? "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°",
             };
             db.Appointments.Add(newAppointment);
         }

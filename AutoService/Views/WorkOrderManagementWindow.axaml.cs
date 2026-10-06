@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ public partial class WorkOrderManagementWindow : Window
     {
         InitializeComponent();
         PageSizeCombo.SelectedIndex = 0;
-        StatusCombo.ItemsSource = new[] { "Новый", "В работе", "Завершён", "Отменён" };
+        StatusCombo.ItemsSource = new[] { "РќРѕРІС‹Р№", "Р’ СЂР°Р±РѕС‚Рµ", "Р—Р°РІРµСЂС€С‘РЅ", "РћС‚РјРµРЅС‘РЅ" };
         LoadMechanics();
         LoadWorkOrders();
     }
@@ -71,7 +71,7 @@ public partial class WorkOrderManagementWindow : Window
     private void UpdatePageInfo()
     {
         var totalPages = Math.Max(1, (int)Math.Ceiling(_totalCount / (double)_pageSize));
-        PageInfoText.Text = $"Стр. {_page + 1} из {totalPages} ({_totalCount} записей)";
+        PageInfoText.Text = $"РЎС‚СЂ. {_page + 1} РёР· {totalPages} ({_totalCount} Р·Р°РїРёСЃРµР№)";
     }
 
     private void Filter_SelectionChanged(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

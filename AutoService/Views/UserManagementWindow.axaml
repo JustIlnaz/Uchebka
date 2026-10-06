@@ -1,11 +1,11 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="using:AutoService.Data"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
         x:Class="AutoService.Views.UserManagementWindow"
-        Title="Ïîëüçîâàòåëè">
+        Title="ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ð¸">
 
     <Grid RowDefinitions="*, Auto" Margin="8">
         <ListBox x:Name="UsersListBox" Grid.Row="0" DoubleTapped="ListBox_DoubleTapped">
@@ -24,8 +24,8 @@
         </ListBox>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
-            <Button Content="Äîáàâèòü" Click="AddButton_Click" />
-            <Button Content="Óäàëèòü" Click="DeleteButton_Click" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ" Click="AddButton_Click" />
+            <Button Content="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" Click="DeleteButton_Click" />
         </StackPanel>
     </Grid>
 </Window>

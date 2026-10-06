@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+ï»¿using Avalonia.Controls;
 using AutoService.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -18,7 +18,7 @@ public partial class InspectionWindow : Window
     public void SetWorkOrder(WorkOrder workOrder)
     {
         _workOrderId = workOrder.Id;
-        WorkOrderText.Text = $"Çàêàç-íàðÿä ¹{_workOrderId}";
+        WorkOrderText.Text = $"Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´ â„–{_workOrderId}";
 
         using var db = new AppDbContext();
         _existing = db.InspectionResults.FirstOrDefault(x => x.WorkOrderId == _workOrderId);

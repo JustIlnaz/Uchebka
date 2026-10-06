@@ -1,24 +1,24 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="250"
         x:Class="AutoService.Views.PaymentWindow"
-        Title="Ïëàò¸æ">
+        Title="ÐŸÐ»Ð°Ñ‚Ñ‘Ð¶">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
-        <TextBlock Text="Ñóììà:" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Ð¡ÑƒÐ¼Ð¼Ð°:" Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="AmountText" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ñïîñîá îïëàòû:" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Ð¡Ð¿Ð¾ÑÐ¾Ð± Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹:" Grid.Row="1" Grid.Column="0"/>
         <ComboBox x:Name="MethodCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Íîìåð òðàíçàêöèè:" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="ÐÐ¾Ð¼ÐµÑ€ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸:" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="TransactionText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ñòàòóñ:" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Ð¡Ñ‚Ð°Ñ‚ÑƒÑ:" Grid.Row="3" Grid.Column="0"/>
         <ComboBox x:Name="StatusCombo" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

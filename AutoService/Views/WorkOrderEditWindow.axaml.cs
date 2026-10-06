@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using Avalonia.Interactivity;
 using AutoService.Data;
 using AutoService.Models;
@@ -21,11 +21,11 @@ public partial class WorkOrderEditWindow : Window
         InitializeComponent();
 
         // create buttons in code to avoid XAML Click parsing problem
-        var addServiceBtn = new Button { Content = "Добавить услугу" };
+        var addServiceBtn = new Button { Content = "Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ" };
         addServiceBtn.Click += AddService_Click;
         ServicePanel.Children.Add(addServiceBtn);
 
-        var addPartBtn = new Button { Content = "Добавить запчасть" };
+        var addPartBtn = new Button { Content = "Р”РѕР±Р°РІРёС‚СЊ Р·Р°РїС‡Р°СЃС‚СЊ" };
         addPartBtn.Click += AddPart_Click;
         PartPanel.Children.Add(addPartBtn);
 
@@ -35,7 +35,7 @@ public partial class WorkOrderEditWindow : Window
             .Include(a => a.Client)
             .ToList();
         MechanicCombo.ItemsSource = db.Mechanics.Include(m => m.User).ToList();
-        StatusCombo.ItemsSource = new[] { "Создан", "В работе", "Завершён", "Отменён" };
+        StatusCombo.ItemsSource = new[] { "РЎРѕР·РґР°РЅ", "Р’ СЂР°Р±РѕС‚Рµ", "Р—Р°РІРµСЂС€С‘РЅ", "РћС‚РјРµРЅС‘РЅ" };
 
         // Populate services and parts lists for selection
         ServiceCombo.ItemsSource = db.Services.ToList();
@@ -167,7 +167,7 @@ public partial class WorkOrderEditWindow : Window
             {
                 AppointmentId = appointment?.Id,
                 MechanicId = mechanic?.Id,
-                Status = status ?? "Создан",
+                Status = status ?? "РЎРѕР·РґР°РЅ",
                 TotalCost = totalCost,
             };
             db.WorkOrders.Add(newWorkOrder);

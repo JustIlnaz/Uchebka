@@ -1,21 +1,21 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="using:AutoService.Data"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AutoService.Views.ServiceManagementWindow"
-        Title="Óñëóãè">
+        Title="Ð£ÑÐ»ÑƒÐ³Ð¸">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto" Margin="10">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" Spacing="8">
-            <TextBlock Text="Öåíà îò:" VerticalAlignment="Center" />
+            <TextBlock Text="Ð¦ÐµÐ½Ð° Ð¾Ñ‚:" VerticalAlignment="Center" />
             <TextBox x:Name="MinPriceText" Width="80" KeyUp="Filter_KeyUp" />
-            <TextBlock Text="äî:" VerticalAlignment="Center" />
+            <TextBlock Text="Ð´Ð¾:" VerticalAlignment="Center" />
             <TextBox x:Name="MaxPriceText" Width="80" KeyUp="Filter_KeyUp" />
-            <TextBlock Text="Äëèò. îò:" VerticalAlignment="Center" />
+            <TextBlock Text="Ð”Ð»Ð¸Ñ‚. Ð¾Ñ‚:" VerticalAlignment="Center" />
             <TextBox x:Name="MinDurationText" Width="60" KeyUp="Filter_KeyUp" />
-            <Button Content="Ñîðò. ïî öåíå" Click="SortByPrice_Click" />
+            <Button Content="Ð¡Ð¾Ñ€Ñ‚. Ð¿Ð¾ Ñ†ÐµÐ½Ðµ" Click="SortByPrice_Click" />
         </StackPanel>
 
         <ListBox Name="ServicesListBox" Grid.Row="1" DoubleTapped="ListBox_DoubleTapped">
@@ -26,7 +26,7 @@
                             <TextBlock Text="{Binding Name}" Width="200" />
                             <TextBlock Text="{Binding Description}" Width="250" />
                             <TextBlock Text="{Binding BasePrice, StringFormat='{}{0:C}'}" Width="100" />
-                            <TextBlock Text="{Binding DurationMinutes, StringFormat='{}{0} ìèí'}" Width="80" />
+                            <TextBlock Text="{Binding DurationMinutes, StringFormat='{}{0} Ð¼Ð¸Ð½'}" Width="80" />
                         </StackPanel>
                     </Border>
                 </DataTemplate>
@@ -34,9 +34,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
-            <Button Content="? Íàçàä" Click="PrevPage_Click" />
+            <Button Content="? ÐÐ°Ð·Ð°Ð´" Click="PrevPage_Click" />
             <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
-            <Button Content="Âïåð¸ä ?" Click="NextPage_Click" />
+            <Button Content="Ð’Ð¿ÐµÑ€Ñ‘Ð´ ?" Click="NextPage_Click" />
             <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>20</ComboBoxItem>
@@ -45,7 +45,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <Button Content="Äîáàâèòü óñëóãó" Click="AddButton_Click" Margin="0,0,8,0" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑƒÑÐ»ÑƒÐ³Ñƒ" Click="AddButton_Click" Margin="0,0,8,0" />
         </StackPanel>
     </Grid>
 </Window>

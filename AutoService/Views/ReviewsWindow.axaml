@@ -1,11 +1,11 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="using:AutoService.Data"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
         x:Class="AutoService.Views.ReviewsWindow"
-        Title="Îòçûâû êëèåíòîâ">
+        Title="ÐžÑ‚Ð·Ñ‹Ð²Ñ‹ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¾Ð²">
 
     <Grid RowDefinitions="*, Auto" Margin="10">
         <ListBox x:Name="ReviewsListBox" Grid.Row="0">
@@ -15,7 +15,7 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <TextBlock Text="{Binding Client.FullName}" FontWeight="Bold" Width="200" />
-                                <TextBlock Text="{Binding Rating, StringFormat='Îöåíêà: {0}/5'}" Width="100" />
+                                <TextBlock Text="{Binding Rating, StringFormat='ÐžÑ†ÐµÐ½ÐºÐ°: {0}/5'}" Width="100" />
                                 <TextBlock Text="{Binding CreatedAt, StringFormat='dd.MM.yyyy'}" Width="100" />
                             </StackPanel>
                             <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" />
@@ -26,7 +26,7 @@
         </ListBox>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
-            <Button Content="Äîáàâèòü îòçûâ" Click="AddButton_Click" />
+            <Button Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²" Click="AddButton_Click" />
         </StackPanel>
     </Grid>
 </Window>

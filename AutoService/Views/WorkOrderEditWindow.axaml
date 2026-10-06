@@ -1,42 +1,42 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="500"
         x:Class="AutoService.Views.WorkOrderEditWindow"
-        Title="Çàêàç-íàðÿä">
+        Title="Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
-        <TextBlock Text="Çàïèñü" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Ð—Ð°Ð¿Ð¸ÑÑŒ" Grid.Row="0" Grid.Column="0"/>
         <ComboBox x:Name="AppointmentCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ìåõàíèê" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="ÐœÐµÑ…Ð°Ð½Ð¸Ðº" Grid.Row="1" Grid.Column="0"/>
         <ComboBox x:Name="MechanicCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Ñòàòóñ" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Ð¡Ñ‚Ð°Ñ‚ÑƒÑ" Grid.Row="2" Grid.Column="0"/>
         <ComboBox x:Name="StatusCombo" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Èòîãîâàÿ ñòîèìîñòü" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Ð˜Ñ‚Ð¾Ð³Ð¾Ð²Ð°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="TotalCostText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
 
         <!-- Services section -->
-        <TextBlock Text="Óñëóãà" Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Ð£ÑÐ»ÑƒÐ³Ð°" Grid.Row="4" Grid.Column="0"/>
         <StackPanel x:Name="ServicePanel" Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <ComboBox x:Name="ServiceCombo" Width="220" />
-            <TextBox x:Name="ServiceQtyText" Width="60" Watermark="Êîë-âî" />
+            <TextBox x:Name="ServiceQtyText" Width="60" Watermark="ÐšÐ¾Ð»-Ð²Ð¾" />
         </StackPanel>
 
         <ListBox x:Name="ServicesListBox" Grid.Row="5" Grid.ColumnSpan="2" Height="80" />
 
         <!-- Parts section -->
-        <TextBlock Text="Çàï÷àñòü" Grid.Row="6" Grid.Column="0"/>
+        <TextBlock Text="Ð—Ð°Ð¿Ñ‡Ð°ÑÑ‚ÑŒ" Grid.Row="6" Grid.Column="0"/>
         <StackPanel x:Name="PartPanel" Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <ComboBox x:Name="PartCombo" Width="220" />
-            <TextBox x:Name="PartQtyText" Width="60" Watermark="Êîë-âî" />
+            <TextBox x:Name="PartQtyText" Width="60" Watermark="ÐšÐ¾Ð»-Ð²Ð¾" />
         </StackPanel>
 
         <ListBox x:Name="PartsListBox" Grid.Row="7" Grid.ColumnSpan="2" Height="80" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

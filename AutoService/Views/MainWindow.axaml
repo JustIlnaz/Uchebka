@@ -1,4 +1,4 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:AutoService.ViewModels"
         xmlns:data="using:AutoService.Data"
@@ -17,7 +17,7 @@
 
     <Grid RowDefinitions="Auto, *, Auto, Auto, Auto" Margin="8">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-            <TextBlock Text="Ïîèñê:" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <TextBlock Text="ÐŸÐ¾Ð¸ÑÐº:" VerticalAlignment="Center" Margin="0,0,8,0" />
             <TextBox x:Name="SearchText" Width="200" KeyUp="SearchText_KeyUp" />
         </StackPanel>
 
@@ -36,9 +36,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
-            <Button Content="? Íàçàä" Click="PrevPage_Click" />
+            <Button Content="? ÐÐ°Ð·Ð°Ð´" Click="PrevPage_Click" />
             <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
-            <Button Content="Âïåð¸ä ?" Click="NextPage_Click" />
+            <Button Content="Ð’Ð¿ÐµÑ€Ñ‘Ð´ ?" Click="NextPage_Click" />
             <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>20</ComboBoxItem>
@@ -47,20 +47,20 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Spacing="8">
-            <Button x:Name="AddClientButton" Content="Äîáàâèòü êëèåíòà" Click="AddButton_Click" />
-            <Button x:Name="ManageCarsButton" Content="Àâòîìîáèëè" Click="ManageCars_Click" />
-            <Button x:Name="ManageAppointmentsButton" Content="Çàïèñè íà îáñëóæèâàíèå" Click="ManageAppointments_Click" />
-            <Button x:Name="ManageWorkOrdersButton" Content="Çàêàç-íàðÿäû" Click="ManageWorkOrders_Click" />
-            <Button x:Name="ManageServicesButton" Content="Óñëóãè" Click="ManageServices_Click" />
-            <Button x:Name="ManagePartsButton" Content="Çàï÷àñòè" Click="ManageParts_Click" />
+            <Button x:Name="AddClientButton" Content="Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°" Click="AddButton_Click" />
+            <Button x:Name="ManageCarsButton" Content="ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»Ð¸" Click="ManageCars_Click" />
+            <Button x:Name="ManageAppointmentsButton" Content="Ð—Ð°Ð¿Ð¸ÑÐ¸ Ð½Ð° Ð¾Ð±ÑÐ»ÑƒÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ" Click="ManageAppointments_Click" />
+            <Button x:Name="ManageWorkOrdersButton" Content="Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´Ñ‹" Click="ManageWorkOrders_Click" />
+            <Button x:Name="ManageServicesButton" Content="Ð£ÑÐ»ÑƒÐ³Ð¸" Click="ManageServices_Click" />
+            <Button x:Name="ManagePartsButton" Content="Ð—Ð°Ð¿Ñ‡Ð°ÑÑ‚Ð¸" Click="ManageParts_Click" />
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Spacing="8">
-            <Button x:Name="ManageUsersButton" Content="Ïîëüçîâàòåëè" Click="ManageUsers_Click" />
-            <Button x:Name="ManageRolesButton" Content="Ðîëè" Click="ManageRoles_Click" />
-            <Button x:Name="ManageMechanicsButton" Content="Ìåõàíèêè" Click="ManageMechanics_Click" />
-            <Button x:Name="ReviewsButton" Content="Îòçûâû" Click="Reviews_Click" />
-            <Button x:Name="AnalyticsButton" Content="Àíàëèòèêà" Click="Analytics_Click" />
+            <Button x:Name="ManageUsersButton" Content="ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ð¸" Click="ManageUsers_Click" />
+            <Button x:Name="ManageRolesButton" Content="Ð Ð¾Ð»Ð¸" Click="ManageRoles_Click" />
+            <Button x:Name="ManageMechanicsButton" Content="ÐœÐµÑ…Ð°Ð½Ð¸ÐºÐ¸" Click="ManageMechanics_Click" />
+            <Button x:Name="ReviewsButton" Content="ÐžÑ‚Ð·Ñ‹Ð²Ñ‹" Click="Reviews_Click" />
+            <Button x:Name="AnalyticsButton" Content="ÐÐ½Ð°Ð»Ð¸Ñ‚Ð¸ÐºÐ°" Click="Analytics_Click" />
         </StackPanel>
     </Grid>
 

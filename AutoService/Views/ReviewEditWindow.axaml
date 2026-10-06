@@ -1,24 +1,24 @@
-<Window xmlns="https://github.com/avaloniaui"
+ï»¿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="350"
         x:Class="AutoService.Views.ReviewEditWindow"
-        Title="Íîâûé îòçûâ">
+        Title="ÐÐ¾Ð²Ñ‹Ð¹ Ð¾Ñ‚Ð·Ñ‹Ð²">
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="10" ColumnDefinitions="Auto, *">
-        <TextBlock Text="Êëèåíò:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="ÐšÐ»Ð¸ÐµÐ½Ñ‚:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
         <ComboBox x:Name="ClientCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,8" />
 
-        <TextBlock Text="Çàêàç-íàðÿä:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="Ð—Ð°ÐºÐ°Ð·-Ð½Ð°Ñ€ÑÐ´:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
         <ComboBox x:Name="WorkOrderCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,8" />
 
-        <TextBlock Text="Îöåíêà (1-5):" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="ÐžÑ†ÐµÐ½ÐºÐ° (1-5):" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
         <NumericUpDown x:Name="RatingInput" Grid.Row="2" Grid.Column="1" Margin="8,0,0,8" Minimum="1" Maximum="5" Value="5" />
 
-        <TextBlock Text="Êîììåíòàðèé:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top"/>
+        <TextBlock Text="ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top"/>
         <TextBox x:Name="CommentText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,8" AcceptsReturn="True" Height="100" TextWrapping="Wrap" />
 
-        <Button Content="Ñîõðàíèòü" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

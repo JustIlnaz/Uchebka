@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+п»їusing Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using System;
@@ -73,7 +73,7 @@ public partial class ServiceManagementWindow : Window
     private void UpdatePageInfo()
     {
         var totalPages = Math.Max(1, (int)Math.Ceiling(_totalCount / (double)_pageSize));
-        PageInfoText.Text = $"Стр. {_page + 1} из {totalPages} ({_totalCount} записей)";
+        PageInfoText.Text = $"РЎС‚СЂ. {_page + 1} РёР· {totalPages} ({_totalCount} Р·Р°РїРёСЃРµР№)";
     }
 
     private void PrevPage_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
