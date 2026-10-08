@@ -6,19 +6,19 @@
         x:Class="AutoService.Views.PartEditWindow"
         Title="Запчасть">
 
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Поставщик" Grid.Row="0"/>
-        <ComboBox Name="SupplierCombo" Grid.Row="0" Margin="120,0,0,0" />
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *" Margin="10">
+        <TextBlock Text="Поставщик" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="SupplierCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Артикул" Grid.Row="1"/>
-        <TextBox Name="SkuText" Grid.Row="1" Margin="120,0,0,0" />
+        <TextBlock Text="Артикул" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="SkuText" Grid.Row="1" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Цена продажи" Grid.Row="2"/>
-        <TextBox Name="SalePriceText" Grid.Row="2" Margin="120,0,0,0" />
+        <TextBlock Text="Цена продажи" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="SalePriceText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Количество на складе" Grid.Row="3"/>
-        <TextBox Name="QuantityText" Grid.Row="3" Margin="120,0,0,0" />
+        <TextBlock Text="Количество на складе" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="QuantityText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,4" />
 
-        <Button Content="Сохранить" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Сохранить" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

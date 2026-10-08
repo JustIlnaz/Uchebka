@@ -34,9 +34,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8" Margin="0,8,0,0">
-            <Button Content="? Назад" Click="PrevPage_Click" />
+            <Button Content="← Назад" Click="PrevPage_Click" />
             <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" />
-            <Button Content="Вперёд ?" Click="NextPage_Click" />
+            <Button Content="Вперёд →" Click="NextPage_Click" />
             <ComboBox x:Name="PageSizeCombo" Width="80" SelectionChanged="PageSize_Changed">
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>20</ComboBoxItem>

@@ -6,28 +6,28 @@
         x:Class="AutoService.Views.AppointmentEditWindow"
         Title="Запись на обслуживание">
 
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
-        <TextBlock Text="Клиент" Grid.Row="0"/>
-        <ComboBox Name="ClientCombo" Grid.Row="0" Margin="120,0,0,0" />
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *" Margin="10">
+        <TextBlock Text="Клиент" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="ClientCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Автомобиль" Grid.Row="1"/>
-        <ComboBox Name="CarCombo" Grid.Row="1" Margin="120,0,0,0" />
+        <TextBlock Text="Автомобиль" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="CarCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Услуга" Grid.Row="2"/>
-        <ComboBox Name="ServiceCombo" Grid.Row="2" Margin="120,0,0,0" />
+        <TextBlock Text="Услуга" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="ServiceCombo" Grid.Row="2" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Механик" Grid.Row="3"/>
-        <ComboBox Name="MechanicCombo" Grid.Row="3" Margin="120,0,0,0" />
+        <TextBlock Text="Механик" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="MechanicCombo" Grid.Row="3" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Ремонтное место" Grid.Row="4"/>
-        <ComboBox Name="RepairBayCombo" Grid.Row="4" Margin="120,0,0,0" />
+        <TextBlock Text="Ремонтное место" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="RepairBayCombo" Grid.Row="4" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Дата и время" Grid.Row="5"/>
-        <TextBox Name="ScheduledAtText" Grid.Row="5" Margin="120,0,0,0" Watermark="dd.MM.yyyy HH:mm" />
+        <TextBlock Text="Дата и время" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="ScheduledAtText" Grid.Row="5" Grid.Column="1" Margin="8,0,0,4" Watermark="dd.MM.yyyy HH:mm" />
 
-        <TextBlock Text="Статус" Grid.Row="6"/>
-        <ComboBox Name="StatusCombo" Grid.Row="6" Margin="120,0,0,0" />
+        <TextBlock Text="Статус" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="StatusCombo" Grid.Row="6" Grid.Column="1" Margin="8,0,0,4" />
 
-        <Button Content="Сохранить" Grid.Row="7" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <Button Content="Сохранить" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
     </Grid>
 </Window>

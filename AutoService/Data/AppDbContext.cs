@@ -41,7 +41,7 @@ public partial class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning Connection string is read from environment variable AUTOSERVICE_CONNECTION. Example: "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=secret"
-        => optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("AUTOSERVICE_CONNECTION") ?? "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=postgres;TrustServerCertificate=true");
+        => optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("AUTOSERVICE_CONNECTION") ?? "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=123;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
