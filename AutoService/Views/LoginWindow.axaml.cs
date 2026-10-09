@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+using System;
 using Avalonia.Interactivity;
 using AutoService.Data;
 using AutoService.Models;
@@ -18,37 +18,80 @@ public partial class LoginWindow : Window
         var username = UsernameText.Text?.Trim();
         var password = PasswordText.Text ?? string.Empty;
 
-        using var db = new AppDbContext();
-        var user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
-        if (user == null)
+        try
         {
-            // simple feedback - real app should show dialog
-            return;
-        }
+            using var db = new AppDbContext();
+            var user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            if (user == null)
+            {
+                MessageText.Text = "Неверное имя пользователя или пароль.";
+                return;
+            }
 
-        UserSession.CurrentUser = user;
-        // open main window
-        var main = new Views.MainWindow();
-        main.Show();
-        this.Close();
+            UserSession.CurrentUser = user;
+            var main = new Views.MainWindow();
+            main.Show();
+            this.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageText.Text = "Ошибка подключения к БД: " + ex.Message;
+        }
     }
 
     private void Register_Click(object? sender, RoutedEventArgs e)
     {
         var username = UsernameText.Text?.Trim();
         var password = PasswordText.Text ?? string.Empty;
-        if (string.IsNullOrWhiteSpace(username)) return;
 
-        using var db = new AppDbContext();
-        if (db.Users.Any(u => u.Username == username)) return; // already exists
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            MessageText.Text = "Введите имя пользователя.";
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            MessageText.Text = "Введите пароль.";
+            return;
+        }
 
-        var newUser = new User { Username = username, Password = password, FullName = username };
-        db.Users.Add(newUser);
-        db.SaveChanges();
+        try
+        {
+            using var db = new AppDbContext();
+            if (db.Users.Any(u => u.Username == username))
+            {
+                MessageText.Text = "Пользователь с таким именем уже существует.";
+                return;
+            }
 
-        UserSession.CurrentUser = newUser;
-        var main = new Views.MainWindow();
-        main.Show();
-        this.Close();
+            var clientRole = db.Roles.FirstOrDefault(r => r.Name == "Клиент");
+            var newUser = new User
+            {
+                Username = username,
+                Password = password,
+                FullName = username,
+                RoleId = clientRole?.Id,
+                RoleName = clientRole?.Name ?? "Клиент"
+            };
+            db.Users.Add(newUser);
+            db.SaveChanges();
+
+            db.Set<Login>().Add(new Login
+            {
+                LoginName = username,
+                Password = password,
+                UserId = newUser.Id
+            });
+            db.SaveChanges();
+
+            UserSession.CurrentUser = newUser;
+            var main = new Views.MainWindow();
+            main.Show();
+            this.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageText.Text = "Ошибка регистрации: " + ex.Message;
+        }
     }
 }
