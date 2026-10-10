@@ -1,4 +1,4 @@
-using Avalonia;
+п»їusing Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Применяем миграции и заполняем БД начальными данными
+            // РџСЂРёРјРµРЅСЏРµРј РјРёРіСЂР°С†РёРё Рё Р·Р°РїРѕР»РЅСЏРµРј Р‘Р” РЅР°С‡Р°Р»СЊРЅС‹РјРё РґР°РЅРЅС‹РјРё
             using (var db = new AppDbContext())
             {
                 db.Database.Migrate();

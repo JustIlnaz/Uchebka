@@ -1,4 +1,5 @@
-using System;
+п»їusing System;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using AutoService.Data;
 using AutoService.Models;
@@ -24,7 +25,7 @@ public partial class LoginWindow : Window
             var user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user == null)
             {
-                MessageText.Text = "Неверное имя пользователя или пароль.";
+                MessageText.Text = "РќРµРІРµСЂРЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РїР°СЂРѕР»СЊ.";
                 return;
             }
 
@@ -35,7 +36,7 @@ public partial class LoginWindow : Window
         }
         catch (Exception ex)
         {
-            MessageText.Text = "Ошибка подключения к БД: " + ex.Message;
+            MessageText.Text = "РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р‘Р”: " + ex.Message;
         }
     }
 
@@ -46,12 +47,12 @@ public partial class LoginWindow : Window
 
         if (string.IsNullOrWhiteSpace(username))
         {
-            MessageText.Text = "Введите имя пользователя.";
+            MessageText.Text = "Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.";
             return;
         }
         if (string.IsNullOrWhiteSpace(password))
         {
-            MessageText.Text = "Введите пароль.";
+            MessageText.Text = "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ.";
             return;
         }
 
@@ -60,18 +61,18 @@ public partial class LoginWindow : Window
             using var db = new AppDbContext();
             if (db.Users.Any(u => u.Username == username))
             {
-                MessageText.Text = "Пользователь с таким именем уже существует.";
+                MessageText.Text = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.";
                 return;
             }
 
-            var clientRole = db.Roles.FirstOrDefault(r => r.Name == "Клиент");
+            var clientRole = db.Roles.FirstOrDefault(r => r.Name == "РљР»РёРµРЅС‚");
             var newUser = new User
             {
                 Username = username,
                 Password = password,
                 FullName = username,
                 RoleId = clientRole?.Id,
-                RoleName = clientRole?.Name ?? "Клиент"
+                RoleName = clientRole?.Name ?? "РљР»РёРµРЅС‚"
             };
             db.Users.Add(newUser);
             db.SaveChanges();
@@ -91,7 +92,7 @@ public partial class LoginWindow : Window
         }
         catch (Exception ex)
         {
-            MessageText.Text = "Ошибка регистрации: " + ex.Message;
+            MessageText.Text = "РћС€РёР±РєР° СЂРµРіРёСЃС‚СЂР°С†РёРё: " + ex.Message;
         }
     }
 }

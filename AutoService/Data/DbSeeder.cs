@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,17 +8,17 @@ public static class DbSeeder
 {
     public static void Seed(AppDbContext db)
     {
-        // Если уже есть роли и пользователи — считаем базу заполненной
+        // Р•СЃР»Рё СѓР¶Рµ РµСЃС‚СЊ СЂРѕР»Рё Рё РїРѕР»СЊР·РѕРІР°С‚РµР»Рё вЂ” СЃС‡РёС‚Р°РµРј Р±Р°Р·Сѓ Р·Р°РїРѕР»РЅРµРЅРЅРѕР№
         if (db.Roles.Any() && db.Users.Any())
             return;
 
         // ---------- Roles ----------
         var roles = new List<Role>
         {
-            new() { Name = "Администратор" },
-            new() { Name = "Механик" },
-            new() { Name = "Руководитель" },
-            new() { Name = "Клиент" }
+            new() { Name = "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ" },
+            new() { Name = "РњРµС…Р°РЅРёРє" },
+            new() { Name = "Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ" },
+            new() { Name = "РљР»РёРµРЅС‚" }
         };
         db.Roles.AddRange(roles);
         db.SaveChanges();
@@ -28,12 +28,12 @@ public static class DbSeeder
         // ---------- Users ----------
         var users = new List<User>
         {
-            new() { Username = "admin",   Password = "admin",   FullName = "Иванов Иван Иванович",      PhoneNumber = "+7 (900) 111-11-11", Email = "admin@autoservice.ru",  RoleId = adminRole.Id,    RoleName = adminRole.Name },
-            new() { Username = "manager", Password = "manager", FullName = "Смирнова Анна Петровна",    PhoneNumber = "+7 (900) 222-22-22", Email = "manager@autoservice.ru", RoleId = managerRole.Id,  RoleName = managerRole.Name },
-            new() { Username = "mechanic1", Password = "1111",  FullName = "Петров Пётр Сергеевич",     PhoneNumber = "+7 (900) 333-33-33", Email = "petrov@autoservice.ru",  RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
-            new() { Username = "mechanic2", Password = "1111",  FullName = "Сидоров Алексей Николаевич", PhoneNumber = "+7 (900) 444-44-44", Email = "sidorov@autoservice.ru", RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
-            new() { Username = "mechanic3", Password = "1111",  FullName = "Кузнецов Дмитрий Олегович", PhoneNumber = "+7 (900) 555-55-55", Email = "kuznecov@autoservice.ru", RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
-            new() { Username = "client1", Password = "1111",    FullName = "Васильев Олег Андреевич",   PhoneNumber = "+7 (900) 666-66-66", Email = "vasiliev@mail.ru",       RoleId = clientRole.Id,   RoleName = clientRole.Name },
+            new() { Username = "admin",   Password = "admin",   FullName = "РРІР°РЅРѕРІ РРІР°РЅ РРІР°РЅРѕРІРёС‡",      PhoneNumber = "+7 (900) 111-11-11", Email = "admin@autoservice.ru",  RoleId = adminRole.Id,    RoleName = adminRole.Name },
+            new() { Username = "manager", Password = "manager", FullName = "РЎРјРёСЂРЅРѕРІР° РђРЅРЅР° РџРµС‚СЂРѕРІРЅР°",    PhoneNumber = "+7 (900) 222-22-22", Email = "manager@autoservice.ru", RoleId = managerRole.Id,  RoleName = managerRole.Name },
+            new() { Username = "mechanic1", Password = "1111",  FullName = "РџРµС‚СЂРѕРІ РџС‘С‚СЂ РЎРµСЂРіРµРµРІРёС‡",     PhoneNumber = "+7 (900) 333-33-33", Email = "petrov@autoservice.ru",  RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
+            new() { Username = "mechanic2", Password = "1111",  FullName = "РЎРёРґРѕСЂРѕРІ РђР»РµРєСЃРµР№ РќРёРєРѕР»Р°РµРІРёС‡", PhoneNumber = "+7 (900) 444-44-44", Email = "sidorov@autoservice.ru", RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
+            new() { Username = "mechanic3", Password = "1111",  FullName = "РљСѓР·РЅРµС†РѕРІ Р”РјРёС‚СЂРёР№ РћР»РµРіРѕРІРёС‡", PhoneNumber = "+7 (900) 555-55-55", Email = "kuznecov@autoservice.ru", RoleId = mechanicRole.Id, RoleName = mechanicRole.Name },
+            new() { Username = "client1", Password = "1111",    FullName = "Р’Р°СЃРёР»СЊРµРІ РћР»РµРі РђРЅРґСЂРµРµРІРёС‡",   PhoneNumber = "+7 (900) 666-66-66", Email = "vasiliev@mail.ru",       RoleId = clientRole.Id,   RoleName = clientRole.Name },
         };
         db.Users.AddRange(users);
         db.SaveChanges();
@@ -45,9 +45,9 @@ public static class DbSeeder
         // ---------- Departments ----------
         var departments = new List<Department>
         {
-            new() { Name = "Отдел технического обслуживания" },
-            new() { Name = "Кузовной отдел" },
-            new() { Name = "Отдел диагностики" }
+            new() { Name = "РћС‚РґРµР» С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ РѕР±СЃР»СѓР¶РёРІР°РЅРёСЏ" },
+            new() { Name = "РљСѓР·РѕРІРЅРѕР№ РѕС‚РґРµР»" },
+            new() { Name = "РћС‚РґРµР» РґРёР°РіРЅРѕСЃС‚РёРєРё" }
         };
         db.Departments.AddRange(departments);
         db.SaveChanges();
@@ -55,11 +55,11 @@ public static class DbSeeder
         // ---------- Specializations ----------
         var specs = new List<Specialization>
         {
-            new() { Name = "Моторист" },
-            new() { Name = "Диагност" },
-            new() { Name = "Шиномонтажник" },
-            new() { Name = "Кузовщик" },
-            new() { Name = "Электрик" }
+            new() { Name = "РњРѕС‚РѕСЂРёСЃС‚" },
+            new() { Name = "Р”РёР°РіРЅРѕСЃС‚" },
+            new() { Name = "РЁРёРЅРѕРјРѕРЅС‚Р°Р¶РЅРёРє" },
+            new() { Name = "РљСѓР·РѕРІС‰РёРє" },
+            new() { Name = "Р­Р»РµРєС‚СЂРёРє" }
         };
         db.Specializations.AddRange(specs);
         db.SaveChanges();
@@ -79,16 +79,16 @@ public static class DbSeeder
         // ---------- Services ----------
         var services = new List<Service>
         {
-            new() { Name = "Замена масла",               Description = "Замена моторного масла и масляного фильтра", BasePrice = 2500m,  DurationMinutes = 45 },
-            new() { Name = "Замена тормозных колодок",   Description = "Снятие и установка новых тормозных колодок", BasePrice = 3000m,  DurationMinutes = 60 },
-            new() { Name = "Компьютерная диагностика",   Description = "Диагностика электронных систем автомобиля",  BasePrice = 1500m,  DurationMinutes = 30 },
-            new() { Name = "Ремонт двигателя",           Description = "Капитальный или текущий ремонт ДВС",          BasePrice = 20000m, DurationMinutes = 480 },
-            new() { Name = "Балансировка колёс",         Description = "Балансировка 4 колёс на стенде",              BasePrice = 1800m,  DurationMinutes = 40 },
-            new() { Name = "Шиномонтаж",                 Description = "Сезонная замена шин",                         BasePrice = 2000m,  DurationMinutes = 50 },
-            new() { Name = "Замена свечей зажигания",    Description = "Замена комплекта свечей зажигания",           BasePrice = 1200m,  DurationMinutes = 30 },
-            new() { Name = "Ремонт подвески",            Description = "Диагностика и ремонт элементов подвески",     BasePrice = 8000m,  DurationMinutes = 180 },
-            new() { Name = "Замена аккумулятора",        Description = "Подбор и установка нового АКБ",               BasePrice = 1000m,  DurationMinutes = 20 },
-            new() { Name = "Кузовной ремонт",            Description = "Рихтовка и покраска кузовных элементов",      BasePrice = 15000m, DurationMinutes = 600 }
+            new() { Name = "Р—Р°РјРµРЅР° РјР°СЃР»Р°",               Description = "Р—Р°РјРµРЅР° РјРѕС‚РѕСЂРЅРѕРіРѕ РјР°СЃР»Р° Рё РјР°СЃР»СЏРЅРѕРіРѕ С„РёР»СЊС‚СЂР°", BasePrice = 2500m,  DurationMinutes = 45 },
+            new() { Name = "Р—Р°РјРµРЅР° С‚РѕСЂРјРѕР·РЅС‹С… РєРѕР»РѕРґРѕРє",   Description = "РЎРЅСЏС‚РёРµ Рё СѓСЃС‚Р°РЅРѕРІРєР° РЅРѕРІС‹С… С‚РѕСЂРјРѕР·РЅС‹С… РєРѕР»РѕРґРѕРє", BasePrice = 3000m,  DurationMinutes = 60 },
+            new() { Name = "РљРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ РґРёР°РіРЅРѕСЃС‚РёРєР°",   Description = "Р”РёР°РіРЅРѕСЃС‚РёРєР° СЌР»РµРєС‚СЂРѕРЅРЅС‹С… СЃРёСЃС‚РµРј Р°РІС‚РѕРјРѕР±РёР»СЏ",  BasePrice = 1500m,  DurationMinutes = 30 },
+            new() { Name = "Р РµРјРѕРЅС‚ РґРІРёРіР°С‚РµР»СЏ",           Description = "РљР°РїРёС‚Р°Р»СЊРЅС‹Р№ РёР»Рё С‚РµРєСѓС‰РёР№ СЂРµРјРѕРЅС‚ Р”Р’РЎ",          BasePrice = 20000m, DurationMinutes = 480 },
+            new() { Name = "Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° РєРѕР»С‘СЃ",         Description = "Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° 4 РєРѕР»С‘СЃ РЅР° СЃС‚РµРЅРґРµ",              BasePrice = 1800m,  DurationMinutes = 40 },
+            new() { Name = "РЁРёРЅРѕРјРѕРЅС‚Р°Р¶",                 Description = "РЎРµР·РѕРЅРЅР°СЏ Р·Р°РјРµРЅР° С€РёРЅ",                         BasePrice = 2000m,  DurationMinutes = 50 },
+            new() { Name = "Р—Р°РјРµРЅР° СЃРІРµС‡РµР№ Р·Р°Р¶РёРіР°РЅРёСЏ",    Description = "Р—Р°РјРµРЅР° РєРѕРјРїР»РµРєС‚Р° СЃРІРµС‡РµР№ Р·Р°Р¶РёРіР°РЅРёСЏ",           BasePrice = 1200m,  DurationMinutes = 30 },
+            new() { Name = "Р РµРјРѕРЅС‚ РїРѕРґРІРµСЃРєРё",            Description = "Р”РёР°РіРЅРѕСЃС‚РёРєР° Рё СЂРµРјРѕРЅС‚ СЌР»РµРјРµРЅС‚РѕРІ РїРѕРґРІРµСЃРєРё",     BasePrice = 8000m,  DurationMinutes = 180 },
+            new() { Name = "Р—Р°РјРµРЅР° Р°РєРєСѓРјСѓР»СЏС‚РѕСЂР°",        Description = "РџРѕРґР±РѕСЂ Рё СѓСЃС‚Р°РЅРѕРІРєР° РЅРѕРІРѕРіРѕ РђРљР‘",               BasePrice = 1000m,  DurationMinutes = 20 },
+            new() { Name = "РљСѓР·РѕРІРЅРѕР№ СЂРµРјРѕРЅС‚",            Description = "Р РёС…С‚РѕРІРєР° Рё РїРѕРєСЂР°СЃРєР° РєСѓР·РѕРІРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ",      BasePrice = 15000m, DurationMinutes = 600 }
         };
         db.Services.AddRange(services);
         db.SaveChanges();
@@ -114,17 +114,17 @@ public static class DbSeeder
         // ---------- RepairBays ----------
         var bays = new List<RepairBay>
         {
-            new() { Name = "Подъёмник №1",        Description = "Двухстоечный подъёмник" },
-            new() { Name = "Подъёмник №2",        Description = "Четырёхстоечный подъёмник" },
-            new() { Name = "Диагностический пост", Description = "Пост компьютерной диагностики" },
-            new() { Name = "Шиномонтажная зона",  Description = "Стенд шиномонтажа и балансировки" },
-            new() { Name = "Кузовной участок",    Description = "Зона кузовного ремонта и покраски" }
+            new() { Name = "РџРѕРґСЉС‘РјРЅРёРє в„–1",        Description = "Р”РІСѓС…СЃС‚РѕРµС‡РЅС‹Р№ РїРѕРґСЉС‘РјРЅРёРє" },
+            new() { Name = "РџРѕРґСЉС‘РјРЅРёРє в„–2",        Description = "Р§РµС‚С‹СЂС‘С…СЃС‚РѕРµС‡РЅС‹Р№ РїРѕРґСЉС‘РјРЅРёРє" },
+            new() { Name = "Р”РёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёР№ РїРѕСЃС‚", Description = "РџРѕСЃС‚ РєРѕРјРїСЊСЋС‚РµСЂРЅРѕР№ РґРёР°РіРЅРѕСЃС‚РёРєРё" },
+            new() { Name = "РЁРёРЅРѕРјРѕРЅС‚Р°Р¶РЅР°СЏ Р·РѕРЅР°",  Description = "РЎС‚РµРЅРґ С€РёРЅРѕРјРѕРЅС‚Р°Р¶Р° Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё" },
+            new() { Name = "РљСѓР·РѕРІРЅРѕР№ СѓС‡Р°СЃС‚РѕРє",    Description = "Р—РѕРЅР° РєСѓР·РѕРІРЅРѕРіРѕ СЂРµРјРѕРЅС‚Р° Рё РїРѕРєСЂР°СЃРєРё" }
         };
         db.RepairBays.AddRange(bays);
         db.SaveChanges();
 
         // ---------- MechanicSchedules ----------
-        var today = DateTime.Today;
+        var today = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
         db.MechanicSchedules.AddRange(new[]
         {
             new MechanicSchedule { MechanicId = mech1.Id, Date = today,                    StartTime = new TimeSpan(9, 0, 0),  EndTime = new TimeSpan(18, 0, 0) },
@@ -151,10 +151,10 @@ public static class DbSeeder
         // ---------- CarCategories ----------
         var categories = new List<CarCategory>
         {
-            new() { Name = "Седан" },
-            new() { Name = "Хэтчбек" },
-            new() { Name = "Внедорожник" },
-            new() { Name = "Универсал" }
+            new() { Name = "РЎРµРґР°РЅ" },
+            new() { Name = "РҐСЌС‚С‡Р±РµРє" },
+            new() { Name = "Р’РЅРµРґРѕСЂРѕР¶РЅРёРє" },
+            new() { Name = "РЈРЅРёРІРµСЂСЃР°Р»" }
         };
         db.CarCategories.AddRange(categories);
         db.SaveChanges();
@@ -162,11 +162,11 @@ public static class DbSeeder
         // ---------- Clients ----------
         var clients = new List<Client>
         {
-            new() { FullName = "Васильев Олег Андреевич",   Phone = "+7 (911) 100-10-01", Email = "vasiliev@mail.ru" },
-            new() { FullName = "Николаева Мария Игоревна",  Phone = "+7 (911) 100-10-02", Email = "nikolaeva@gmail.com" },
-            new() { FullName = "Громов Артём Викторович",   Phone = "+7 (911) 100-10-03", Email = "gromov@yandex.ru" },
-            new() { FullName = "Фёдорова Елена Сергеевна",  Phone = "+7 (911) 100-10-04", Email = "fedorova@mail.ru" },
-            new() { FullName = "Белов Сергей Дмитриевич",   Phone = "+7 (911) 100-10-05", Email = "belov@gmail.com" }
+            new() { FullName = "Р’Р°СЃРёР»СЊРµРІ РћР»РµРі РђРЅРґСЂРµРµРІРёС‡",   Phone = "+7 (911) 100-10-01", Email = "vasiliev@mail.ru" },
+            new() { FullName = "РќРёРєРѕР»Р°РµРІР° РњР°СЂРёСЏ РРіРѕСЂРµРІРЅР°",  Phone = "+7 (911) 100-10-02", Email = "nikolaeva@gmail.com" },
+            new() { FullName = "Р“СЂРѕРјРѕРІ РђСЂС‚С‘Рј Р’РёРєС‚РѕСЂРѕРІРёС‡",   Phone = "+7 (911) 100-10-03", Email = "gromov@yandex.ru" },
+            new() { FullName = "Р¤С‘РґРѕСЂРѕРІР° Р•Р»РµРЅР° РЎРµСЂРіРµРµРІРЅР°",  Phone = "+7 (911) 100-10-04", Email = "fedorova@mail.ru" },
+            new() { FullName = "Р‘РµР»РѕРІ РЎРµСЂРіРµР№ Р”РјРёС‚СЂРёРµРІРёС‡",   Phone = "+7 (911) 100-10-05", Email = "belov@gmail.com" }
         };
         db.Clients.AddRange(clients);
         db.SaveChanges();
@@ -176,12 +176,12 @@ public static class DbSeeder
         // ---------- Cars ----------
         var cars = new List<Car>
         {
-            new() { ClientId = cl1.Id, MakeId = makes[0].Id, CategoryId = categories[0].Id, Model = "Camry",      Year = 2018, Vin = "XW7BF4FK90S012345", RegistrationNumber = "А123БВ78",  Mileage = 85000 },
-            new() { ClientId = cl1.Id, MakeId = makes[2].Id, CategoryId = categories[1].Id, Model = "Vesta",      Year = 2021, Vin = "XTAFLR46B1M067890", RegistrationNumber = "В456ГД178", Mileage = 30000 },
-            new() { ClientId = cl2.Id, MakeId = makes[1].Id, CategoryId = categories[2].Id, Model = "X5",         Year = 2019, Vin = "WBACR410XKL123456", RegistrationNumber = "Е789ЖЗ78",  Mileage = 60000 },
-            new() { ClientId = cl3.Id, MakeId = makes[3].Id, CategoryId = categories[0].Id, Model = "Solaris",    Year = 2020, Vin = "Z94CB41ABKR234567", RegistrationNumber = "К012ИК178", Mileage = 45000 },
-            new() { ClientId = cl4.Id, MakeId = makes[4].Id, CategoryId = categories[3].Id, Model = "Passat",     Year = 2017, Vin = "WVWZZZ3CZHE345678", RegistrationNumber = "М345ЛО78",  Mileage = 120000 },
-            new() { ClientId = cl5.Id, MakeId = makes[0].Id, CategoryId = categories[2].Id, Model = "RAV4",       Year = 2022, Vin = "JTMRFREV20J456789", RegistrationNumber = "Н678ПР178", Mileage = 15000 }
+            new() { ClientId = cl1.Id, MakeId = makes[0].Id, CategoryId = categories[0].Id, Model = "Camry",      Year = 2018, Vin = "XW7BF4FK90S012345", RegistrationNumber = "Рђ123Р‘Р’78",  Mileage = 85000 },
+            new() { ClientId = cl1.Id, MakeId = makes[2].Id, CategoryId = categories[1].Id, Model = "Vesta",      Year = 2021, Vin = "XTAFLR46B1M067890", RegistrationNumber = "Р’456Р“Р”178", Mileage = 30000 },
+            new() { ClientId = cl2.Id, MakeId = makes[1].Id, CategoryId = categories[2].Id, Model = "X5",         Year = 2019, Vin = "WBACR410XKL123456", RegistrationNumber = "Р•789Р–Р—78",  Mileage = 60000 },
+            new() { ClientId = cl3.Id, MakeId = makes[3].Id, CategoryId = categories[0].Id, Model = "Solaris",    Year = 2020, Vin = "Z94CB41ABKR234567", RegistrationNumber = "Рљ012РРљ178", Mileage = 45000 },
+            new() { ClientId = cl4.Id, MakeId = makes[4].Id, CategoryId = categories[3].Id, Model = "Passat",     Year = 2017, Vin = "WVWZZZ3CZHE345678", RegistrationNumber = "Рњ345Р›Рћ78",  Mileage = 120000 },
+            new() { ClientId = cl5.Id, MakeId = makes[0].Id, CategoryId = categories[2].Id, Model = "RAV4",       Year = 2022, Vin = "JTMRFREV20J456789", RegistrationNumber = "Рќ678РџР 178", Mileage = 15000 }
         };
         db.Cars.AddRange(cars);
         db.SaveChanges();
@@ -191,9 +191,9 @@ public static class DbSeeder
         // ---------- Suppliers ----------
         var suppliers = new List<Supplier>
         {
-            new() { Name = "ООО «АвтоДеталь»",   ContactInfo = "+7 (812) 200-00-01, avtodetal@mail.ru" },
-            new() { Name = "ЗАО «МехЗапчасть»",  ContactInfo = "+7 (812) 200-00-02, mech@zapchast.ru" },
-            new() { Name = "ИП Смирнов",          ContactInfo = "+7 (812) 200-00-03, smirnov@parts.ru" }
+            new() { Name = "РћРћРћ В«РђРІС‚РѕР”РµС‚Р°Р»СЊВ»",   ContactInfo = "+7 (812) 200-00-01, avtodetal@mail.ru" },
+            new() { Name = "Р—РђРћ В«РњРµС…Р—Р°РїС‡Р°СЃС‚СЊВ»",  ContactInfo = "+7 (812) 200-00-02, mech@zapchast.ru" },
+            new() { Name = "РРџ РЎРјРёСЂРЅРѕРІ",          ContactInfo = "+7 (812) 200-00-03, smirnov@parts.ru" }
         };
         db.Suppliers.AddRange(suppliers);
         db.SaveChanges();
@@ -218,19 +218,19 @@ public static class DbSeeder
         db.SaveChanges();
 
         // ---------- Appointments ----------
-        var now = DateTime.Now;
+        var now = DateTime.UtcNow;
         var appointments = new List<Appointment>
         {
-            new() { ClientId = cl1.Id, CarId = car1.Id, ServiceId = services[0].Id, ScheduledAt = now.AddDays(-10), MechanicId = mech1.Id, RepairBayId = bays[0].Id, Status = "Выполнена" },
-            new() { ClientId = cl2.Id, CarId = car3.Id, ServiceId = services[2].Id, ScheduledAt = now.AddDays(-7),  MechanicId = mech2.Id, RepairBayId = bays[2].Id, Status = "Выполнена" },
-            new() { ClientId = cl3.Id, CarId = car4.Id, ServiceId = services[5].Id, ScheduledAt = now.AddDays(-5),  MechanicId = mech3.Id, RepairBayId = bays[3].Id, Status = "Выполнена" },
-            new() { ClientId = cl4.Id, CarId = car5.Id, ServiceId = services[3].Id, ScheduledAt = now.AddDays(-3),  MechanicId = mech1.Id, RepairBayId = bays[1].Id, Status = "Подтверждена" },
-            new() { ClientId = cl5.Id, CarId = car6.Id, ServiceId = services[4].Id, ScheduledAt = now.AddDays(-1),  MechanicId = mech3.Id, RepairBayId = bays[3].Id, Status = "Запланирована" },
-            new() { ClientId = cl1.Id, CarId = car2.Id, ServiceId = services[6].Id, ScheduledAt = now.AddDays(1),   MechanicId = mech1.Id, RepairBayId = bays[0].Id, Status = "Запланирована" },
-            new() { ClientId = cl2.Id, CarId = car3.Id, ServiceId = services[1].Id, ScheduledAt = now.AddDays(2),   MechanicId = mech3.Id, RepairBayId = bays[0].Id, Status = "Подтверждена" },
-            new() { ClientId = cl3.Id, CarId = car4.Id, ServiceId = services[8].Id, ScheduledAt = now.AddDays(-2),  MechanicId = mech2.Id, RepairBayId = bays[2].Id, Status = "Отменена" },
-            new() { ClientId = cl4.Id, CarId = car5.Id, ServiceId = services[9].Id, ScheduledAt = now.AddDays(4),   MechanicId = mech1.Id, RepairBayId = bays[4].Id, Status = "Запланирована" },
-            new() { ClientId = cl5.Id, CarId = car6.Id, ServiceId = services[7].Id, ScheduledAt = now.AddDays(-8),  MechanicId = mech1.Id, RepairBayId = bays[1].Id, Status = "Выполнена" }
+            new() { ClientId = cl1.Id, CarId = car1.Id, ServiceId = services[0].Id, ScheduledAt = now.AddDays(-10), MechanicId = mech1.Id, RepairBayId = bays[0].Id, Status = "Р’С‹РїРѕР»РЅРµРЅР°" },
+            new() { ClientId = cl2.Id, CarId = car3.Id, ServiceId = services[2].Id, ScheduledAt = now.AddDays(-7),  MechanicId = mech2.Id, RepairBayId = bays[2].Id, Status = "Р’С‹РїРѕР»РЅРµРЅР°" },
+            new() { ClientId = cl3.Id, CarId = car4.Id, ServiceId = services[5].Id, ScheduledAt = now.AddDays(-5),  MechanicId = mech3.Id, RepairBayId = bays[3].Id, Status = "Р’С‹РїРѕР»РЅРµРЅР°" },
+            new() { ClientId = cl4.Id, CarId = car5.Id, ServiceId = services[3].Id, ScheduledAt = now.AddDays(-3),  MechanicId = mech1.Id, RepairBayId = bays[1].Id, Status = "РџРѕРґС‚РІРµСЂР¶РґРµРЅР°" },
+            new() { ClientId = cl5.Id, CarId = car6.Id, ServiceId = services[4].Id, ScheduledAt = now.AddDays(-1),  MechanicId = mech3.Id, RepairBayId = bays[3].Id, Status = "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°" },
+            new() { ClientId = cl1.Id, CarId = car2.Id, ServiceId = services[6].Id, ScheduledAt = now.AddDays(1),   MechanicId = mech1.Id, RepairBayId = bays[0].Id, Status = "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°" },
+            new() { ClientId = cl2.Id, CarId = car3.Id, ServiceId = services[1].Id, ScheduledAt = now.AddDays(2),   MechanicId = mech3.Id, RepairBayId = bays[0].Id, Status = "РџРѕРґС‚РІРµСЂР¶РґРµРЅР°" },
+            new() { ClientId = cl3.Id, CarId = car4.Id, ServiceId = services[8].Id, ScheduledAt = now.AddDays(-2),  MechanicId = mech2.Id, RepairBayId = bays[2].Id, Status = "РћС‚РјРµРЅРµРЅР°" },
+            new() { ClientId = cl4.Id, CarId = car5.Id, ServiceId = services[9].Id, ScheduledAt = now.AddDays(4),   MechanicId = mech1.Id, RepairBayId = bays[4].Id, Status = "Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅР°" },
+            new() { ClientId = cl5.Id, CarId = car6.Id, ServiceId = services[7].Id, ScheduledAt = now.AddDays(-8),  MechanicId = mech1.Id, RepairBayId = bays[1].Id, Status = "Р’С‹РїРѕР»РЅРµРЅР°" }
         };
         db.Appointments.AddRange(appointments);
         db.SaveChanges();
@@ -238,11 +238,11 @@ public static class DbSeeder
         // ---------- WorkOrders ----------
         var workOrders = new List<WorkOrder>
         {
-            new() { AppointmentId = appointments[0].Id, MechanicId = mech1.Id, Status = "Завершён", TotalCost = 0 },
-            new() { AppointmentId = appointments[1].Id, MechanicId = mech2.Id, Status = "Завершён", TotalCost = 0 },
-            new() { AppointmentId = appointments[2].Id, MechanicId = mech3.Id, Status = "Завершён", TotalCost = 0 },
-            new() { AppointmentId = appointments[4].Id, MechanicId = mech3.Id, Status = "В работе", TotalCost = 0 },
-            new() { AppointmentId = appointments[9].Id, MechanicId = mech1.Id, Status = "Завершён", TotalCost = 0 }
+            new() { AppointmentId = appointments[0].Id, MechanicId = mech1.Id, Status = "Р—Р°РІРµСЂС€С‘РЅ", TotalCost = 0 },
+            new() { AppointmentId = appointments[1].Id, MechanicId = mech2.Id, Status = "Р—Р°РІРµСЂС€С‘РЅ", TotalCost = 0 },
+            new() { AppointmentId = appointments[2].Id, MechanicId = mech3.Id, Status = "Р—Р°РІРµСЂС€С‘РЅ", TotalCost = 0 },
+            new() { AppointmentId = appointments[4].Id, MechanicId = mech3.Id, Status = "Р’ СЂР°Р±РѕС‚Рµ", TotalCost = 0 },
+            new() { AppointmentId = appointments[9].Id, MechanicId = mech1.Id, Status = "Р—Р°РІРµСЂС€С‘РЅ", TotalCost = 0 }
         };
         db.WorkOrders.AddRange(workOrders);
         db.SaveChanges();
@@ -300,16 +300,16 @@ public static class DbSeeder
         // ---------- Invoices ----------
         var invoices = new List<Invoice>
         {
-            // wo1 — полностью оплачен
-            new() { WorkOrderId = wo1.Id, CreatedAt = now.AddDays(-9), AmountBeforeDiscount = wo1.TotalCost, Discount = 500m, Tax = Math.Round(wo1.TotalCost * 0.20m, 2), TotalAmount = wo1.TotalCost - 500m + Math.Round(wo1.TotalCost * 0.20m, 2), Status = "Оплачен" },
-            // wo2 — частично оплачен
-            new() { WorkOrderId = wo2.Id, CreatedAt = now.AddDays(-6), AmountBeforeDiscount = wo2.TotalCost, Discount = 0m,   Tax = Math.Round(wo2.TotalCost * 0.20m, 2), TotalAmount = wo2.TotalCost + Math.Round(wo2.TotalCost * 0.20m, 2), Status = "Частично оплачен" },
-            // wo3 — полностью оплачен
-            new() { WorkOrderId = wo3.Id, CreatedAt = now.AddDays(-4), AmountBeforeDiscount = wo3.TotalCost, Discount = 200m, Tax = Math.Round(wo3.TotalCost * 0.20m, 2), TotalAmount = wo3.TotalCost - 200m + Math.Round(wo3.TotalCost * 0.20m, 2), Status = "Оплачен" },
-            // wo4 — не оплачен
-            new() { WorkOrderId = wo4.Id, CreatedAt = now,             AmountBeforeDiscount = wo4.TotalCost, Discount = 0m,   Tax = Math.Round(wo4.TotalCost * 0.20m, 2), TotalAmount = wo4.TotalCost + Math.Round(wo4.TotalCost * 0.20m, 2), Status = "Не оплачен" },
-            // wo5 — полностью оплачен
-            new() { WorkOrderId = wo5.Id, CreatedAt = now.AddDays(-7), AmountBeforeDiscount = wo5.TotalCost, Discount = 0m,   Tax = Math.Round(wo5.TotalCost * 0.20m, 2), TotalAmount = wo5.TotalCost + Math.Round(wo5.TotalCost * 0.20m, 2), Status = "Оплачен" }
+            // wo1 вЂ” РїРѕР»РЅРѕСЃС‚СЊСЋ РѕРїР»Р°С‡РµРЅ
+            new() { WorkOrderId = wo1.Id, CreatedAt = now.AddDays(-9),  AmountBeforeDiscount = wo1.TotalCost, Discount = 500m, Tax = Math.Round(wo1.TotalCost * 0.20m, 2), TotalAmount = wo1.TotalCost - 500m + Math.Round(wo1.TotalCost * 0.20m, 2), Status = "РћРїР»Р°С‡РµРЅ" },
+            // wo2 вЂ” С‡Р°СЃС‚РёС‡РЅРѕ РѕРїР»Р°С‡РµРЅ
+            new() { WorkOrderId = wo2.Id, CreatedAt = now.AddDays(-6),  AmountBeforeDiscount = wo2.TotalCost, Discount = 0m,   Tax = Math.Round(wo2.TotalCost * 0.20m, 2), TotalAmount = wo2.TotalCost + Math.Round(wo2.TotalCost * 0.20m, 2), Status = "Р§Р°СЃС‚РёС‡РЅРѕ РѕРїР»Р°С‡РµРЅ" },
+            // wo3 вЂ” РїРѕР»РЅРѕСЃС‚СЊСЋ РѕРїР»Р°С‡РµРЅ
+            new() { WorkOrderId = wo3.Id, CreatedAt = now.AddDays(-4),  AmountBeforeDiscount = wo3.TotalCost, Discount = 200m, Tax = Math.Round(wo3.TotalCost * 0.20m, 2), TotalAmount = wo3.TotalCost - 200m + Math.Round(wo3.TotalCost * 0.20m, 2), Status = "РћРїР»Р°С‡РµРЅ" },
+            // wo4 вЂ” РЅРµ РѕРїР»Р°С‡РµРЅ
+            new() { WorkOrderId = wo4.Id, CreatedAt = now,             AmountBeforeDiscount = wo4.TotalCost, Discount = 0m,   Tax = Math.Round(wo4.TotalCost * 0.20m, 2), TotalAmount = wo4.TotalCost + Math.Round(wo4.TotalCost * 0.20m, 2), Status = "РќРµ РѕРїР»Р°С‡РµРЅ" },
+            // wo5 вЂ” РїРѕР»РЅРѕСЃС‚СЊСЋ РѕРїР»Р°С‡РµРЅ
+            new() { WorkOrderId = wo5.Id, CreatedAt = now.AddDays(-7), AmountBeforeDiscount = wo5.TotalCost, Discount = 0m,   Tax = Math.Round(wo5.TotalCost * 0.20m, 2), TotalAmount = wo5.TotalCost + Math.Round(wo5.TotalCost * 0.20m, 2), Status = "РћРїР»Р°С‡РµРЅ" }
         };
         db.Invoices.AddRange(invoices);
         db.SaveChanges();
@@ -319,41 +319,41 @@ public static class DbSeeder
         // ---------- Payments ----------
         db.Payments.AddRange(new[]
         {
-            // inv1: оплачен одним платежом
-            new Payment { InvoiceId = inv1.Id, Date = now.AddDays(-9),  Amount = inv1.TotalAmount,               Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100001" },
-            // inv2: два частичных платежа
-            new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-5),  Amount = inv2.TotalAmount / 2,           Method = "Наличные", Status = "Успешно", TransactionNumber = "TXN-100002" },
-            new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-3),  Amount = inv2.TotalAmount / 4,           Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100003" },
-            // inv3: оплачен одним платежом
-            new Payment { InvoiceId = inv3.Id, Date = now.AddDays(-4),  Amount = inv3.TotalAmount,               Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100004" },
-            // inv5: два платежа (часть + остаток)
-            new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-7),  Amount = inv5.TotalAmount * 0.6m,        Method = "Перевод", Status = "Успешно", TransactionNumber = "TXN-100005" },
-            new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-6),  Amount = inv5.TotalAmount * 0.4m,        Method = "Наличные", Status = "Успешно", TransactionNumber = "TXN-100006" }
+            // inv1: РѕРїР»Р°С‡РµРЅ РѕРґРЅРёРј РїР»Р°С‚РµР¶РѕРј
+            new Payment { InvoiceId = inv1.Id, Date = now.AddDays(-9),  Amount = inv1.TotalAmount,               Method = "РљР°СЂС‚Р°",   Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100001" },
+            // inv2: РґРІР° С‡Р°СЃС‚РёС‡РЅС‹С… РїР»Р°С‚РµР¶Р°
+            new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-5),  Amount = inv2.TotalAmount / 2,           Method = "РќР°Р»РёС‡РЅС‹Рµ", Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100002" },
+            new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-3),  Amount = inv2.TotalAmount / 4,           Method = "РљР°СЂС‚Р°",   Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100003" },
+            // inv3: РѕРїР»Р°С‡РµРЅ РѕРґРЅРёРј РїР»Р°С‚РµР¶РѕРј
+            new Payment { InvoiceId = inv3.Id, Date = now.AddDays(-4),  Amount = inv3.TotalAmount,               Method = "РљР°СЂС‚Р°",   Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100004" },
+            // inv5: РґРІР° РїР»Р°С‚РµР¶Р° (С‡Р°СЃС‚СЊ + РѕСЃС‚Р°С‚РѕРє)
+            new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-7),  Amount = inv5.TotalAmount * 0.6m,        Method = "РџРµСЂРµРІРѕРґ", Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100005" },
+            new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-6),  Amount = inv5.TotalAmount * 0.4m,        Method = "РќР°Р»РёС‡РЅС‹Рµ", Status = "РЈСЃРїРµС€РЅРѕ", TransactionNumber = "TXN-100006" }
         });
         db.SaveChanges();
 
         // ---------- InspectionResults ----------
         db.InspectionResults.AddRange(new[]
         {
-            new InspectionResult { WorkOrderId = wo1.Id, EngineState = "Хорошее",     BrakesState = "Хорошее",      SuspensionState = "Хорошее",          ElectricalState = "Хорошее",    Recommendations = "Следующая замена масла через 10 000 км." },
-            new InspectionResult { WorkOrderId = wo2.Id, EngineState = "Хорошее",     BrakesState = "Удовлетворит.", SuspensionState = "Хорошее",          ElectricalState = "Ошибки ЭБУ",  Recommendations = "Рекомендуется замена воздушного фильтра." },
-            new InspectionResult { WorkOrderId = wo3.Id, EngineState = "Хорошее",     BrakesState = "Хорошее",      SuspensionState = "Хорошее",          ElectricalState = "Хорошее",    Recommendations = "Шины заменены на зимние." },
-            new InspectionResult { WorkOrderId = wo4.Id, EngineState = "Не проверен", BrakesState = "Не проверено", SuspensionState = "Требует внимания", ElectricalState = "Не проверено", Recommendations = "Требуется диагностика подвески." },
-            new InspectionResult { WorkOrderId = wo5.Id, EngineState = "Хорошее",     BrakesState = "Износ колодок", SuspensionState = "Износ амортизаторов", ElectricalState = "Хорошее", Recommendations = "Рекомендуется замена задних тормозных колодок." }
+            new InspectionResult { WorkOrderId = wo1.Id, EngineState = "РҐРѕСЂРѕС€РµРµ",     BrakesState = "РҐРѕСЂРѕС€РµРµ",      SuspensionState = "РҐРѕСЂРѕС€РµРµ",          ElectricalState = "РҐРѕСЂРѕС€РµРµ",    Recommendations = "РЎР»РµРґСѓСЋС‰Р°СЏ Р·Р°РјРµРЅР° РјР°СЃР»Р° С‡РµСЂРµР· 10 000 РєРј." },
+            new InspectionResult { WorkOrderId = wo2.Id, EngineState = "РҐРѕСЂРѕС€РµРµ",     BrakesState = "РЈРґРѕРІР»РµС‚РІРѕСЂРёС‚.", SuspensionState = "РҐРѕСЂРѕС€РµРµ",          ElectricalState = "РћС€РёР±РєРё Р­Р‘РЈ",  Recommendations = "Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ Р·Р°РјРµРЅР° РІРѕР·РґСѓС€РЅРѕРіРѕ С„РёР»СЊС‚СЂР°." },
+            new InspectionResult { WorkOrderId = wo3.Id, EngineState = "РҐРѕСЂРѕС€РµРµ",     BrakesState = "РҐРѕСЂРѕС€РµРµ",      SuspensionState = "РҐРѕСЂРѕС€РµРµ",          ElectricalState = "РҐРѕСЂРѕС€РµРµ",    Recommendations = "РЁРёРЅС‹ Р·Р°РјРµРЅРµРЅС‹ РЅР° Р·РёРјРЅРёРµ." },
+            new InspectionResult { WorkOrderId = wo4.Id, EngineState = "РќРµ РїСЂРѕРІРµСЂРµРЅ", BrakesState = "РќРµ РїСЂРѕРІРµСЂРµРЅРѕ", SuspensionState = "РўСЂРµР±СѓРµС‚ РІРЅРёРјР°РЅРёСЏ", ElectricalState = "РќРµ РїСЂРѕРІРµСЂРµРЅРѕ", Recommendations = "РўСЂРµР±СѓРµС‚СЃСЏ РґРёР°РіРЅРѕСЃС‚РёРєР° РїРѕРґРІРµСЃРєРё." },
+            new InspectionResult { WorkOrderId = wo5.Id, EngineState = "РҐРѕСЂРѕС€РµРµ",     BrakesState = "РР·РЅРѕСЃ РєРѕР»РѕРґРѕРє", SuspensionState = "РР·РЅРѕСЃ Р°РјРѕСЂС‚РёР·Р°С‚РѕСЂРѕРІ", ElectricalState = "РҐРѕСЂРѕС€РµРµ", Recommendations = "Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ Р·Р°РјРµРЅР° Р·Р°РґРЅРёС… С‚РѕСЂРјРѕР·РЅС‹С… РєРѕР»РѕРґРѕРє." }
         });
         db.SaveChanges();
 
         // ---------- Reviews ----------
         db.Reviews.AddRange(new[]
         {
-            new Review { ClientId = cl1.Id, WorkOrderId = wo1.Id, Rating = 5, Comment = "Отличный сервис, всё сделали быстро и качественно!", CreatedAt = now.AddDays(-8) },
-            new Review { ClientId = cl2.Id, WorkOrderId = wo2.Id, Rating = 4, Comment = "Хорошая диагностика, но пришлось немного подождать.", CreatedAt = now.AddDays(-5) },
-            new Review { ClientId = cl3.Id, WorkOrderId = wo3.Id, Rating = 5, Comment = "Шиномонтаж занял всего 40 минут. Рекомендую!",        CreatedAt = now.AddDays(-3) },
-            new Review { ClientId = cl5.Id, WorkOrderId = wo5.Id, Rating = 4, Comment = "Подвеску починили хорошо, но цена выше ожиданий.",   CreatedAt = now.AddDays(-6) }
+            new Review { ClientId = cl1.Id, WorkOrderId = wo1.Id, Rating = 5, Comment = "РћС‚Р»РёС‡РЅС‹Р№ СЃРµСЂРІРёСЃ, РІСЃС‘ СЃРґРµР»Р°Р»Рё Р±С‹СЃС‚СЂРѕ Рё РєР°С‡РµСЃС‚РІРµРЅРЅРѕ!", CreatedAt = now.AddDays(-8) },
+            new Review { ClientId = cl2.Id, WorkOrderId = wo2.Id, Rating = 4, Comment = "РҐРѕСЂРѕС€Р°СЏ РґРёР°РіРЅРѕСЃС‚РёРєР°, РЅРѕ РїСЂРёС€Р»РѕСЃСЊ РЅРµРјРЅРѕРіРѕ РїРѕРґРѕР¶РґР°С‚СЊ.", CreatedAt = now.AddDays(-5) },
+            new Review { ClientId = cl3.Id, WorkOrderId = wo3.Id, Rating = 5, Comment = "РЁРёРЅРѕРјРѕРЅС‚Р°Р¶ Р·Р°РЅСЏР» РІСЃРµРіРѕ 40 РјРёРЅСѓС‚. Р РµРєРѕРјРµРЅРґСѓСЋ!",        CreatedAt = now.AddDays(-3) },
+            new Review { ClientId = cl5.Id, WorkOrderId = wo5.Id, Rating = 4, Comment = "РџРѕРґРІРµСЃРєСѓ РїРѕС‡РёРЅРёР»Рё С…РѕСЂРѕС€Рѕ, РЅРѕ С†РµРЅР° РІС‹С€Рµ РѕР¶РёРґР°РЅРёР№.",   CreatedAt = now.AddDays(-6) }
         });
         db.SaveChanges();
 
-        // ---------- Logins (учётные записи) ----------
+        // ---------- Logins (СѓС‡С‘С‚РЅС‹Рµ Р·Р°РїРёСЃРё) ----------
         db.Set<Login>().AddRange(new[]
         {
             new Login { LoginName = "admin",     Password = "admin",   UserId = adminUser.Id },
