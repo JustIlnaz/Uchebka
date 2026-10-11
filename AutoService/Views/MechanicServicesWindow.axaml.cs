@@ -37,10 +37,14 @@ public partial class MechanicServicesWindow : Window
         AssignedListBox.ItemsSource = assigned;
     }
 
-    private void AddButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void AddButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var service = ServiceCombo.SelectedItem as Service;
-        if (service == null) return;
+        if (service == null)
+        {
+            await InputDialog.ShowMessage(this, "Сначала выберите услугу в списке.");
+            return;
+        }
 
         using var db = new AppDbContext();
         bool exists = db.MechanicServices.Any(ms => ms.MechanicId == _mechanicId && ms.ServiceId == service.Id);
@@ -52,10 +56,14 @@ public partial class MechanicServicesWindow : Window
         LoadAssigned();
     }
 
-    private void RemoveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void RemoveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var name = AssignedListBox.SelectedItem as string;
-        if (name == null) return;
+        if (name == null)
+        {
+            await InputDialog.ShowMessage(this, "Сначала выберите услугу в списке.");
+            return;
+        }
 
         using var db = new AppDbContext();
         var service = db.Services.FirstOrDefault(s => s.Name == name);

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -9,4 +9,6 @@ public class Supplier
     public string? ContactInfo { get; set; }
 
     public virtual ICollection<Part> Parts { get; set; } = new List<Part>();
+
+    public override string ToString() => Name;
 }

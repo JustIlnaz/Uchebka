@@ -13,9 +13,13 @@ public partial class AppointmentManagementWindow : Window
     private int _pageSize = 10;
     private int _totalCount = 0;
 
+    private bool IsClient => UserSession.CurrentUser?.RoleName?.Trim().ToLowerInvariant() is "client" or "клиент"
+        || UserSession.CurrentUser?.RoleId == 4;
+
     public AppointmentManagementWindow()
     {
         InitializeComponent();
+        AddAppointmentButton.IsVisible = !IsClient;
         StatusCombo.ItemsSource = new[] { "Запланирована", "Подтверждена", "Отменена", "Выполнена" };
         PageSizeCombo.SelectedIndex = 0;
         LoadAppointments();
@@ -28,7 +32,7 @@ public partial class AppointmentManagementWindow : Window
     }
 
     private void Filter_SelectionChanged(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { _page = 0; ApplyFilter(); }
-    private void Filter_KeyUp(object? sender, Avalonia.Input.KeyEventArgs e) { _page = 0; ApplyFilter(); }
+    private void Filter_DateChanged(object? sender, DatePickerSelectedValueChangedEventArgs e) { _page = 0; ApplyFilter(); }
 
     private void ApplyFilter()
     {
@@ -40,11 +44,22 @@ public partial class AppointmentManagementWindow : Window
                 .Include(a => a.Car)
                 .Include(a => a.Service);
 
+            if (IsClient)
+            {
+                var email = UserSession.CurrentUser?.Email?.Trim().ToLowerInvariant();
+                q = q.Where(a => email != null && a.Client != null && a.Client.Email != null
+                    && a.Client.Email.Trim().ToLower() == email);
+            }
+
             if (StatusCombo.SelectedItem is string status && !string.IsNullOrWhiteSpace(status))
                 q = q.Where(a => a.Status == status);
 
-            if (DateTime.TryParse(DateText.Text, out var date))
-                q = q.Where(a => a.ScheduledAt.Date == date.Date);
+            if (DatePicker.SelectedDate is DateTimeOffset selectedDate)
+            {
+                var date = selectedDate.Date.Date;
+                var nextDate = date.AddDays(1);
+                q = q.Where(a => a.ScheduledAt >= date && a.ScheduledAt < nextDate);
+            }
 
             _totalCount = q.Count();
             AppointmentsListBox.ItemsSource = q
@@ -90,7 +105,7 @@ public partial class AppointmentManagementWindow : Window
     private void ResetFilter_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         StatusCombo.SelectedItem = null;
-        DateText.Text = string.Empty;
+        DatePicker.SelectedDate = null;
         LoadAppointments();
     }
 
@@ -105,6 +120,7 @@ public partial class AppointmentManagementWindow : Window
     {
         var appointment = AppointmentsListBox.SelectedItem as Appointment;
         if (appointment == null) return;
+        if (IsClient) return;
 
         AppointmentVariableData.SelectedAppointment = appointment;
 

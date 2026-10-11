@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -14,4 +14,6 @@ public class Mechanic
     public virtual Specialization? Specialization { get; set; }
     public virtual ICollection<MechanicService> MechanicServices { get; set; } = new List<MechanicService>();
     public virtual ICollection<WorkOrder> WorkOrders { get; set; } = new List<WorkOrder>();
+
+    public override string ToString() => User?.FullName ?? $"Механик #{Id}";
 }

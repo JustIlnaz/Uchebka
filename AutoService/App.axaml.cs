@@ -19,7 +19,6 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Применяем миграции и заполняем БД начальными данными
             using (var db = new AppDbContext())
             {
                 db.Database.Migrate();

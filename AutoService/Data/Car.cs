@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -19,4 +19,6 @@ public class Car
     public virtual CarMake? Make { get; set; }
     public virtual CarCategory? Category { get; set; }
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+
+    public override string ToString() => $"{Make?.Name} {Model} ({RegistrationNumber})".Trim();
 }

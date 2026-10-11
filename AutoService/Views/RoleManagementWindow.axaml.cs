@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using AutoService.Data;
 using System.Linq;
 
@@ -20,7 +20,7 @@ public partial class RoleManagementWindow : Window
 
     private async void AddButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var input = new InputDialog("Role name:");
+        var input = new InputDialog("Название роли:");
         var result = await input.ShowDialog<string?>(this);
         if (string.IsNullOrWhiteSpace(result)) return;
 
@@ -35,7 +35,7 @@ public partial class RoleManagementWindow : Window
         var role = RolesListBox.SelectedItem as Role;
         if (role == null) return;
 
-        var input = new InputDialog("Role name:", role.Name);
+        var input = new InputDialog("Название роли:", role.Name);
         var result = await input.ShowDialog<string?>(this);
         if (string.IsNullOrWhiteSpace(result)) return;
 

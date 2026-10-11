@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -8,4 +8,6 @@ public class CarMake
     public string Name { get; set; } = null!;
 
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+
+    public override string ToString() => Name;
 }

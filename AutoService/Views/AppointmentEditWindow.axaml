@@ -23,7 +23,10 @@
         <ComboBox Name="RepairBayCombo" Grid.Row="4" Grid.Column="1" Margin="8,0,0,4" />
 
         <TextBlock Text="Дата и время" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
-        <TextBox Name="ScheduledAtText" Grid.Row="5" Grid.Column="1" Margin="8,0,0,4" Watermark="dd.MM.yyyy HH:mm" />
+        <StackPanel Grid.Row="5" Grid.Column="1" Margin="8,0,0,4" Orientation="Horizontal" Spacing="8">
+            <DatePicker Name="ScheduledDatePicker" Width="150" />
+            <TimePicker Name="ScheduledTimePicker" Width="120" />
+        </StackPanel>
 
         <TextBlock Text="Статус" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
         <ComboBox Name="StatusCombo" Grid.Row="6" Grid.Column="1" Margin="8,0,0,4" />

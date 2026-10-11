@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -15,4 +15,6 @@ public class WorkOrder
     public virtual ICollection<WorkOrderService> WorkOrderServices { get; set; } = new List<WorkOrderService>();
     public virtual ICollection<WorkOrderPart> WorkOrderParts { get; set; } = new List<WorkOrderPart>();
     public virtual Invoice? Invoice { get; set; }
+
+    public override string ToString() => $"Заказ-наряд #{Id}";
 }

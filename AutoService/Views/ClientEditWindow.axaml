@@ -13,7 +13,7 @@
         <TextBlock Text="Телефон:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBox Name="PhoneText" Grid.Row="1" Grid.Column="1" Margin="8,0,0,4" />
 
-        <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="Эл. почта:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBox Name="EmailText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,4" />
 
         <Button Content="Сохранить" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />

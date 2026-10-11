@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -14,4 +14,6 @@ public class Part
 
     public virtual Supplier? Supplier { get; set; }
     public virtual ICollection<WorkOrderPart> WorkOrderParts { get; set; } = new List<WorkOrderPart>();
+
+    public override string ToString() => Sku ?? $"Запчасть #{Id}";
 }

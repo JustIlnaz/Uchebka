@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using System.Linq;
@@ -24,9 +24,16 @@ public partial class PartEditWindow : Window
         }
     }
 
-    private void Save_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void Save_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
+        if (string.IsNullOrWhiteSpace(SkuText.Text)
+            || !decimal.TryParse(SalePriceText.Text, out var salePrice) || salePrice < 0
+            || !int.TryParse(QuantityText.Text, out var quantity) || quantity < 0)
+        {
+            await InputDialog.ShowMessage(this, "Укажите артикул, неотрицательную цену и количество.");
+            return;
+        }
 
         if (PartVariableData.SelectedPart != null)
         {
@@ -37,8 +44,8 @@ public partial class PartEditWindow : Window
                 var supplier = SupplierCombo.SelectedItem as Supplier;
                 thisPart.SupplierId = supplier?.Id;
                 thisPart.Sku = SkuText.Text;
-                thisPart.SalePrice = decimal.TryParse(SalePriceText.Text, out var sp) ? sp : 0;
-                thisPart.QuantityInStock = int.TryParse(QuantityText.Text, out var q) ? q : 0;
+                thisPart.SalePrice = salePrice;
+                thisPart.QuantityInStock = quantity;
             }
         }
         else
@@ -48,8 +55,8 @@ public partial class PartEditWindow : Window
             {
                 SupplierId = supplier?.Id,
                 Sku = SkuText.Text,
-                SalePrice = decimal.TryParse(SalePriceText.Text, out var sp) ? sp : 0,
-                QuantityInStock = int.TryParse(QuantityText.Text, out var q) ? q : 0,
+                SalePrice = salePrice,
+                QuantityInStock = quantity,
             };
             db.Parts.Add(newPart);
         }

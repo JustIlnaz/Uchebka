@@ -1,4 +1,4 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -18,7 +18,7 @@
         <TextBox x:Name="PasswordText" PasswordChar="*" Watermark="Введите пароль"/>
 
         <Button Content="Войти" Click="Login_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-        <Button Content="Регистрация" Click="Register_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+
 
         <TextBlock x:Name="MessageText" Foreground="Red" TextWrapping="Wrap" HorizontalAlignment="Center"/>
     </StackPanel>

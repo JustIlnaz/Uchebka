@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
@@ -47,7 +47,11 @@ public partial class MechanicManagementWindow : Window
     private async void ServicesButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var m = MechanicsListBox.SelectedItem as Mechanic;
-        if (m == null) return;
+        if (m == null)
+        {
+            await InputDialog.ShowMessage(this, "Сначала выберите механика в списке.");
+            return;
+        }
 
         MechanicVariableData.SelectedMechanic = m;
         var win = new MechanicServicesWindow();
@@ -58,7 +62,11 @@ public partial class MechanicManagementWindow : Window
     private async void ScheduleButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var m = MechanicsListBox.SelectedItem as Mechanic;
-        if (m == null) return;
+        if (m == null)
+        {
+            await InputDialog.ShowMessage(this, "Сначала выберите механика в списке.");
+            return;
+        }
 
         MechanicVariableData.SelectedMechanic = m;
         var win = new MechanicScheduleWindow();

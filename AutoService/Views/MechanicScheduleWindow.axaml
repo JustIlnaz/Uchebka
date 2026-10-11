@@ -23,9 +23,9 @@
         </ListBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
-            <TextBox x:Name="DateText" Width="110" Watermark="дд.мм.гггг" />
-            <TextBox x:Name="StartText" Width="70" Watermark="чч:мм" />
-            <TextBox x:Name="EndText" Width="70" Watermark="чч:мм" />
+            <DatePicker x:Name="DatePicker" Width="150" />
+            <TimePicker x:Name="StartTimePicker" Width="120" />
+            <TimePicker x:Name="EndTimePicker" Width="120" />
             <Button Content="Добавить" Click="AddButton_Click" />
             <Button Content="Удалить" Click="DeleteButton_Click" />
         </StackPanel>

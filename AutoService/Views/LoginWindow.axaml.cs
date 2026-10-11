@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using AutoService.Data;
@@ -18,6 +18,12 @@ public partial class LoginWindow : Window
     {
         var username = UsernameText.Text?.Trim();
         var password = PasswordText.Text ?? string.Empty;
+
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+        {
+            MessageText.Text = "Введите имя пользователя и пароль.";
+            return;
+        }
 
         try
         {
@@ -40,59 +46,6 @@ public partial class LoginWindow : Window
         }
     }
 
-    private void Register_Click(object? sender, RoutedEventArgs e)
-    {
-        var username = UsernameText.Text?.Trim();
-        var password = PasswordText.Text ?? string.Empty;
 
-        if (string.IsNullOrWhiteSpace(username))
-        {
-            MessageText.Text = "Введите имя пользователя.";
-            return;
-        }
-        if (string.IsNullOrWhiteSpace(password))
-        {
-            MessageText.Text = "Введите пароль.";
-            return;
-        }
 
-        try
-        {
-            using var db = new AppDbContext();
-            if (db.Users.Any(u => u.Username == username))
-            {
-                MessageText.Text = "Пользователь с таким именем уже существует.";
-                return;
-            }
-
-            var clientRole = db.Roles.FirstOrDefault(r => r.Name == "Клиент");
-            var newUser = new User
-            {
-                Username = username,
-                Password = password,
-                FullName = username,
-                RoleId = clientRole?.Id,
-                RoleName = clientRole?.Name ?? "Клиент"
-            };
-            db.Users.Add(newUser);
-            db.SaveChanges();
-
-            db.Set<Login>().Add(new Login
-            {
-                LoginName = username,
-                Password = password,
-                UserId = newUser.Id
-            });
-            db.SaveChanges();
-
-            UserSession.CurrentUser = newUser;
-            var main = new Views.MainWindow();
-            main.Show();
-            this.Close();
-        }
-        catch (Exception ex)
-        {
-            MessageText.Text = "Ошибка регистрации: " + ex.Message;
-        }
-    }
 }

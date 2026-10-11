@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace AutoService.Data;
 
@@ -19,4 +19,6 @@ public class Appointment
     public virtual Mechanic? Mechanic { get; set; }
     public virtual RepairBay? RepairBay { get; set; }
     public virtual WorkOrder? WorkOrder { get; set; }
+
+    public override string ToString() => $"{ScheduledAt:dd.MM.yyyy HH:mm} — {Client?.FullName}";
 }

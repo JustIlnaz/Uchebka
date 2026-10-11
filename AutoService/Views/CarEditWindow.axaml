@@ -2,26 +2,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+         mc:Ignorable="d" d:DesignWidth="520" d:DesignHeight="430"
         x:Class="AutoService.Views.CarEditWindow"
-        Title="Автомобиль">
+         Title="Добавление автомобиля"
+         Width="520" Height="430"
+         MinWidth="480" MinHeight="380">
 
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *" Margin="10">
-        <TextBlock Text="Клиент" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
-        <ComboBox Name="ClientCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,4" />
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="150, *" Margin="20" RowSpacing="4">
+        <TextBlock Text="Владелец *" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="ClientCombo" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0" HorizontalContentAlignment="Stretch" />
 
-        <TextBlock Text="Марка" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-        <ComboBox Name="MakeCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,4" />
+        <TextBlock Text="Марка *" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="MakeCombo" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Модель" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-        <TextBox Name="ModelText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,4" />
+        <TextBlock Text="Модель *" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="ModelText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" Watermark="Например, Camry" />
 
-        <TextBlock Text="Гос. номер" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
-        <TextBox Name="RegText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,4" />
+        <TextBlock Text="Категория" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox Name="CategoryCombo" Grid.Row="3" Grid.Column="1" Margin="8,0,0,0" />
 
-        <TextBlock Text="Пробег" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
-        <TextBox Name="MileageText" Grid.Row="4" Grid.Column="1" Margin="8,0,0,4" />
+        <TextBlock Text="Год выпуска" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+        <NumericUpDown Name="YearInput" Grid.Row="4" Grid.Column="1" Margin="8,0,0,0" Minimum="1886" Maximum="2100" FormatString="0" />
 
-        <Button Content="Сохранить" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
+        <TextBlock Text="VIN" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="VinText" Grid.Row="5" Grid.Column="1" Margin="8,0,0,0" Watermark="17 символов" MaxLength="17" />
+
+        <TextBlock Text="Гос. номер *" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Name="RegText" Grid.Row="6" Grid.Column="1" Margin="8,0,0,0" Watermark="Например, А123ВС 116" />
+
+        <TextBlock Text="Пробег, км" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
+        <NumericUpDown Name="MileageInput" Grid.Row="7" Grid.Column="1" Margin="8,0,0,0" Minimum="0" Maximum="2000000" FormatString="0" />
+
+        <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="8,12,0,0">
+            <Button Content="Отмена" Click="Cancel_Click" />
+            <Button Content="Сохранить" Click="Save_Click" IsDefault="True" />
+        </StackPanel>
     </Grid>
 </Window>

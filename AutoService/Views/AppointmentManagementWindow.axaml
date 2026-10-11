@@ -12,7 +12,7 @@
             <TextBlock Text="Статус:" VerticalAlignment="Center" />
             <ComboBox x:Name="StatusCombo" Width="150" SelectionChanged="Filter_SelectionChanged" />
             <TextBlock Text="Дата:" VerticalAlignment="Center" />
-            <TextBox x:Name="DateText" Width="110" KeyUp="Filter_KeyUp" />
+            <DatePicker x:Name="DatePicker" Width="150" SelectedDateChanged="Filter_DateChanged" />
             <Button Content="Сбросить" Click="ResetFilter_Click" />
         </StackPanel>
 
@@ -44,7 +44,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <Button Content="Создать запись" Click="AddButton_Click" Margin="0,0,8,0" />
+            <Button x:Name="AddAppointmentButton" Content="Создать запись" Click="AddButton_Click" Margin="0,0,8,0" />
         </StackPanel>
     </Grid>
 </Window>

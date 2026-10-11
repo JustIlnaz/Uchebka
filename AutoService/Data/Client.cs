@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AutoService.Data;
@@ -12,4 +12,6 @@ public class Client
 
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+    public override string ToString() => FullName;
 }

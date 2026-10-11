@@ -15,6 +15,9 @@ public partial class MainWindow : Window
     private int _pageSize = 10;
     private int _totalCount = 0;
 
+    private bool IsClient => UserSession.CurrentUser?.RoleName?.Trim().ToLowerInvariant() is "client" or "клиент"
+        || UserSession.CurrentUser?.RoleId == 4;
+
     public MainWindow()
     {
         InitializeComponent();
@@ -28,67 +31,45 @@ public partial class MainWindow : Window
         var user = UserSession.CurrentUser;
         if (user == null) return;
 
-        void SetMechanic()
+        var buttons = new[]
         {
-            AddClientButton.IsVisible = false;
-            ManageCarsButton.IsVisible = false;
-            ManageAppointmentsButton.IsVisible = false;
-            ManageServicesButton.IsVisible = false;
-            ManagePartsButton.IsVisible = false;
-            ManageUsersButton.IsVisible = false;
-            ManageRolesButton.IsVisible = false;
-            ManageMechanicsButton.IsVisible = false;
-            ReviewsButton.IsVisible = false;
-            AnalyticsButton.IsVisible = false;
-        }
+            AddClientButton, ManageCarsButton, ManageAppointmentsButton,
+            ManageWorkOrdersButton, ManageServicesButton, ManagePartsButton,
+            ManageUsersButton, ManageRolesButton, ManageMechanicsButton,
+            ReviewsButton, AnalyticsButton
+        };
+        foreach (var button in buttons)
+            button.IsVisible = false;
 
-        void SetManager()
+        var role = user.RoleName?.Trim().ToLowerInvariant();
+        var roleId = role switch
         {
-            AddClientButton.IsVisible = false;
-            ManageCarsButton.IsVisible = false;
-            ManageAppointmentsButton.IsVisible = false;
-            ManageServicesButton.IsVisible = false;
-            ManagePartsButton.IsVisible = false;
-            ManageUsersButton.IsVisible = false;
-            ManageRolesButton.IsVisible = false;
-            ManageMechanicsButton.IsVisible = false;
-            // Руководителю доступны: Отзывы, Аналитика
-        }
+            "admin" or "administrator" or "администратор" => 1,
+            "mechanic" or "механик" => 2,
+            "manager" or "lead" or "руководитель" => 3,
+            "client" or "клиент" => 4,
+            _ => user.RoleId ?? 0
+        };
 
-        // Prefer string RoleName if present (e.g. "admin", "mechanic", "manager")
-        if (!string.IsNullOrWhiteSpace(user.RoleName))
+        switch (roleId)
         {
-            var rn = user.RoleName.Trim().ToLower();
-            switch (rn)
-            {
-                case "admin":
-                case "administrator":
-                    // full access
-                    break;
-                case "mechanic":
-                    SetMechanic();
-                    break;
-                case "manager":
-                case "lead":
-                    SetManager();
-                    break;
-            }
-
-            return;
-        }
-
-        // Fallback to numeric RoleId mapping (1=Admin, 2=Mechanic, 3=Manager)
-        if (user.RoleId == null) return;
-
-        switch (user.RoleId)
-        {
-            case 1: // Admin - full access
+            case 1:
+                foreach (var button in buttons)
+                    button.IsVisible = true;
                 break;
-            case 2: // Mechanic
-                SetMechanic();
+            case 2:
+                ManageWorkOrdersButton.IsVisible = true;
                 break;
-            case 3: // Manager
-                SetManager();
+            case 3:
+                ReviewsButton.IsVisible = true;
+                AnalyticsButton.IsVisible = true;
+                break;
+            case 4:
+                ManageCarsButton.IsVisible = true;
+                ManageAppointmentsButton.IsVisible = true;
+                ManageWorkOrdersButton.IsVisible = true;
+                AddClientButton.IsVisible = false;
+                SearchText.Watermark = "Ваши данные";
                 break;
         }
     }
@@ -98,18 +79,22 @@ public partial class MainWindow : Window
         try
         {
             using var db = new AppDbContext();
+            if (IsClient)
+            {
+                ApplySearch();
+                return;
+            }
+
             _totalCount = db.Clients.Count();
-            var clients = db.Clients
+            ClientsListBox.ItemsSource = db.Clients
                 .OrderBy(c => c.FullName)
                 .Skip(_page * _pageSize)
                 .Take(_pageSize)
                 .ToList();
-            ClientsListBox.ItemsSource = clients;
             UpdatePageInfo();
         }
         catch
         {
-            // In example keep silent; real app should log or show message
         }
     }
 
@@ -148,6 +133,11 @@ public partial class MainWindow : Window
         {
             using var db = new AppDbContext();
             IQueryable<Client> q = db.Clients;
+            if (IsClient)
+            {
+                var email = UserSession.CurrentUser?.Email?.Trim().ToLowerInvariant();
+                q = q.Where(c => email != null && c.Email != null && c.Email.Trim().ToLower() == email);
+            }
             if (!string.IsNullOrWhiteSpace(query))
             {
                 var s = query.ToLower();
@@ -168,7 +158,6 @@ public partial class MainWindow : Window
         }
     }
 
-    // New search handler referenced from XAML; filters clients by name, phone or email
     private void SearchText_KeyUp(object? sender, KeyEventArgs e)
     {
         _page = 0;
@@ -186,6 +175,7 @@ public partial class MainWindow : Window
     {
         var client = ClientsListBox.SelectedItem as Client;
         if (client == null) return;
+        if (IsClient) return;
 
         ClientVariableData.SelectedClient = client;
 

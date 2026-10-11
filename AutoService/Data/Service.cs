@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -12,4 +12,6 @@ public class Service
 
     public virtual ICollection<MechanicService> MechanicServices { get; set; } = new List<MechanicService>();
     public virtual ICollection<WorkOrderService> WorkOrderServices { get; set; } = new List<WorkOrderService>();
+
+    public override string ToString() => Name;
 }

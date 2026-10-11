@@ -23,7 +23,7 @@
         <TextBlock x:Name="TotalAmountText" Grid.Row="4" Grid.Column="1" Margin="8,0,0,0" FontWeight="Bold" />
 
         <TextBlock Text="Статус:" Grid.Row="5" Grid.Column="0"/>
-        <ComboBox x:Name="StatusCombo" Grid.Row="5" Grid.Column="1" Margin="8,0,0,0" />
+        <ComboBox x:Name="StatusCombo" Grid.Row="5" Grid.Column="1" Margin="8,0,0,0" IsEnabled="False" />
 
         <Button Content="Сохранить счёт" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="Save_Click" />
         <Button Content="Добавить платёж" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,8,0,0" Click="AddPayment_Click" />

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AutoService.Data;
 
@@ -8,4 +8,6 @@ public class Specialization
     public string Name { get; set; } = null!;
 
     public virtual ICollection<Mechanic> Mechanics { get; set; } = new List<Mechanic>();
+
+    public override string ToString() => Name;
 }

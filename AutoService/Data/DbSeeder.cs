@@ -8,11 +8,9 @@ public static class DbSeeder
 {
     public static void Seed(AppDbContext db)
     {
-        // Если уже есть роли и пользователи — считаем базу заполненной
         if (db.Roles.Any() && db.Users.Any())
             return;
 
-        // ---------- Roles ----------
         var roles = new List<Role>
         {
             new() { Name = "Администратор" },
@@ -25,7 +23,6 @@ public static class DbSeeder
 
         Role adminRole = roles[0], mechanicRole = roles[1], managerRole = roles[2], clientRole = roles[3];
 
-        // ---------- Users ----------
         var users = new List<User>
         {
             new() { Username = "admin",   Password = "admin",   FullName = "Иванов Иван Иванович",      PhoneNumber = "+7 (900) 111-11-11", Email = "admin@autoservice.ru",  RoleId = adminRole.Id,    RoleName = adminRole.Name },
@@ -42,7 +39,6 @@ public static class DbSeeder
         User mechUser1 = users[2], mechUser2 = users[3], mechUser3 = users[4];
         User clientUser = users[5];
 
-        // ---------- Departments ----------
         var departments = new List<Department>
         {
             new() { Name = "Отдел технического обслуживания" },
@@ -52,7 +48,6 @@ public static class DbSeeder
         db.Departments.AddRange(departments);
         db.SaveChanges();
 
-        // ---------- Specializations ----------
         var specs = new List<Specialization>
         {
             new() { Name = "Моторист" },
@@ -64,7 +59,6 @@ public static class DbSeeder
         db.Specializations.AddRange(specs);
         db.SaveChanges();
 
-        // ---------- Mechanics ----------
         var mechanics = new List<Mechanic>
         {
             new() { UserId = mechUser1.Id, DepartmentId = departments[0].Id, SpecializationId = specs[0].Id },
@@ -76,7 +70,6 @@ public static class DbSeeder
 
         Mechanic mech1 = mechanics[0], mech2 = mechanics[1], mech3 = mechanics[2];
 
-        // ---------- Services ----------
         var services = new List<Service>
         {
             new() { Name = "Замена масла",               Description = "Замена моторного масла и масляного фильтра", BasePrice = 2500m,  DurationMinutes = 45 },
@@ -93,7 +86,6 @@ public static class DbSeeder
         db.Services.AddRange(services);
         db.SaveChanges();
 
-        // ---------- MechanicService (M:N) ----------
         db.MechanicServices.AddRange(new[]
         {
             new MechanicService { MechanicId = mech1.Id, ServiceId = services[0].Id },
@@ -111,7 +103,6 @@ public static class DbSeeder
         });
         db.SaveChanges();
 
-        // ---------- RepairBays ----------
         var bays = new List<RepairBay>
         {
             new() { Name = "Подъёмник №1",        Description = "Двухстоечный подъёмник" },
@@ -123,7 +114,6 @@ public static class DbSeeder
         db.RepairBays.AddRange(bays);
         db.SaveChanges();
 
-        // ---------- MechanicSchedules ----------
         var today = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
         db.MechanicSchedules.AddRange(new[]
         {
@@ -136,7 +126,6 @@ public static class DbSeeder
         });
         db.SaveChanges();
 
-        // ---------- CarMakes ----------
         var makes = new List<CarMake>
         {
             new() { Name = "Toyota" },
@@ -148,7 +137,6 @@ public static class DbSeeder
         db.CarMakes.AddRange(makes);
         db.SaveChanges();
 
-        // ---------- CarCategories ----------
         var categories = new List<CarCategory>
         {
             new() { Name = "Седан" },
@@ -159,7 +147,6 @@ public static class DbSeeder
         db.CarCategories.AddRange(categories);
         db.SaveChanges();
 
-        // ---------- Clients ----------
         var clients = new List<Client>
         {
             new() { FullName = "Васильев Олег Андреевич",   Phone = "+7 (911) 100-10-01", Email = "vasiliev@mail.ru" },
@@ -173,7 +160,6 @@ public static class DbSeeder
 
         Client cl1 = clients[0], cl2 = clients[1], cl3 = clients[2], cl4 = clients[3], cl5 = clients[4];
 
-        // ---------- Cars ----------
         var cars = new List<Car>
         {
             new() { ClientId = cl1.Id, MakeId = makes[0].Id, CategoryId = categories[0].Id, Model = "Camry",      Year = 2018, Vin = "XW7BF4FK90S012345", RegistrationNumber = "А123БВ78",  Mileage = 85000 },
@@ -188,7 +174,6 @@ public static class DbSeeder
 
         Car car1 = cars[0], car2 = cars[1], car3 = cars[2], car4 = cars[3], car5 = cars[4], car6 = cars[5];
 
-        // ---------- Suppliers ----------
         var suppliers = new List<Supplier>
         {
             new() { Name = "ООО «АвтоДеталь»",   ContactInfo = "+7 (812) 200-00-01, avtodetal@mail.ru" },
@@ -200,7 +185,6 @@ public static class DbSeeder
 
         Supplier sup1 = suppliers[0], sup2 = suppliers[1], sup3 = suppliers[2];
 
-        // ---------- Parts ----------
         var parts = new List<Part>
         {
             new() { SupplierId = sup1.Id, Sku = "OIL-5W40-4L",   PurchasePrice = 1800m,  SalePrice = 2800m,  QuantityInStock = 20, MinQuantity = 5 },
@@ -217,7 +201,6 @@ public static class DbSeeder
         db.Parts.AddRange(parts);
         db.SaveChanges();
 
-        // ---------- Appointments ----------
         var now = DateTime.UtcNow;
         var appointments = new List<Appointment>
         {
@@ -235,7 +218,6 @@ public static class DbSeeder
         db.Appointments.AddRange(appointments);
         db.SaveChanges();
 
-        // ---------- WorkOrders ----------
         var workOrders = new List<WorkOrder>
         {
             new() { AppointmentId = appointments[0].Id, MechanicId = mech1.Id, Status = "Завершён", TotalCost = 0 },
@@ -249,7 +231,6 @@ public static class DbSeeder
 
         WorkOrder wo1 = workOrders[0], wo2 = workOrders[1], wo3 = workOrders[2], wo4 = workOrders[3], wo5 = workOrders[4];
 
-        // ---------- WorkOrderServices ----------
         var woServices = new List<WorkOrderService>
         {
             new() { WorkOrderId = wo1.Id, ServiceId = services[0].Id, Quantity = 1, Price = services[0].BasePrice },
@@ -268,7 +249,6 @@ public static class DbSeeder
         db.WorkOrderServices.AddRange(woServices);
         db.SaveChanges();
 
-        // ---------- WorkOrderParts ----------
         var woParts = new List<WorkOrderPart>
         {
             new() { WorkOrderId = wo1.Id, PartId = parts[0].Id, Quantity = 1, Price = parts[0].SalePrice },
@@ -288,7 +268,6 @@ public static class DbSeeder
         db.WorkOrderParts.AddRange(woParts);
         db.SaveChanges();
 
-        // ---------- Recalculate WorkOrder TotalCost ----------
         foreach (var wo in workOrders)
         {
             var sSum = db.WorkOrderServices.Where(ws => ws.WorkOrderId == wo.Id).Sum(ws => ws.Price * ws.Quantity);
@@ -297,18 +276,12 @@ public static class DbSeeder
         }
         db.SaveChanges();
 
-        // ---------- Invoices ----------
         var invoices = new List<Invoice>
         {
-            // wo1 — полностью оплачен
             new() { WorkOrderId = wo1.Id, CreatedAt = now.AddDays(-9),  AmountBeforeDiscount = wo1.TotalCost, Discount = 500m, Tax = Math.Round(wo1.TotalCost * 0.20m, 2), TotalAmount = wo1.TotalCost - 500m + Math.Round(wo1.TotalCost * 0.20m, 2), Status = "Оплачен" },
-            // wo2 — частично оплачен
             new() { WorkOrderId = wo2.Id, CreatedAt = now.AddDays(-6),  AmountBeforeDiscount = wo2.TotalCost, Discount = 0m,   Tax = Math.Round(wo2.TotalCost * 0.20m, 2), TotalAmount = wo2.TotalCost + Math.Round(wo2.TotalCost * 0.20m, 2), Status = "Частично оплачен" },
-            // wo3 — полностью оплачен
             new() { WorkOrderId = wo3.Id, CreatedAt = now.AddDays(-4),  AmountBeforeDiscount = wo3.TotalCost, Discount = 200m, Tax = Math.Round(wo3.TotalCost * 0.20m, 2), TotalAmount = wo3.TotalCost - 200m + Math.Round(wo3.TotalCost * 0.20m, 2), Status = "Оплачен" },
-            // wo4 — не оплачен
             new() { WorkOrderId = wo4.Id, CreatedAt = now,             AmountBeforeDiscount = wo4.TotalCost, Discount = 0m,   Tax = Math.Round(wo4.TotalCost * 0.20m, 2), TotalAmount = wo4.TotalCost + Math.Round(wo4.TotalCost * 0.20m, 2), Status = "Не оплачен" },
-            // wo5 — полностью оплачен
             new() { WorkOrderId = wo5.Id, CreatedAt = now.AddDays(-7), AmountBeforeDiscount = wo5.TotalCost, Discount = 0m,   Tax = Math.Round(wo5.TotalCost * 0.20m, 2), TotalAmount = wo5.TotalCost + Math.Round(wo5.TotalCost * 0.20m, 2), Status = "Оплачен" }
         };
         db.Invoices.AddRange(invoices);
@@ -316,23 +289,17 @@ public static class DbSeeder
 
         Invoice inv1 = invoices[0], inv2 = invoices[1], inv3 = invoices[2], inv4 = invoices[3], inv5 = invoices[4];
 
-        // ---------- Payments ----------
         db.Payments.AddRange(new[]
         {
-            // inv1: оплачен одним платежом
             new Payment { InvoiceId = inv1.Id, Date = now.AddDays(-9),  Amount = inv1.TotalAmount,               Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100001" },
-            // inv2: два частичных платежа
             new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-5),  Amount = inv2.TotalAmount / 2,           Method = "Наличные", Status = "Успешно", TransactionNumber = "TXN-100002" },
             new Payment { InvoiceId = inv2.Id, Date = now.AddDays(-3),  Amount = inv2.TotalAmount / 4,           Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100003" },
-            // inv3: оплачен одним платежом
             new Payment { InvoiceId = inv3.Id, Date = now.AddDays(-4),  Amount = inv3.TotalAmount,               Method = "Карта",   Status = "Успешно", TransactionNumber = "TXN-100004" },
-            // inv5: два платежа (часть + остаток)
             new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-7),  Amount = inv5.TotalAmount * 0.6m,        Method = "Перевод", Status = "Успешно", TransactionNumber = "TXN-100005" },
             new Payment { InvoiceId = inv5.Id, Date = now.AddDays(-6),  Amount = inv5.TotalAmount * 0.4m,        Method = "Наличные", Status = "Успешно", TransactionNumber = "TXN-100006" }
         });
         db.SaveChanges();
 
-        // ---------- InspectionResults ----------
         db.InspectionResults.AddRange(new[]
         {
             new InspectionResult { WorkOrderId = wo1.Id, EngineState = "Хорошее",     BrakesState = "Хорошее",      SuspensionState = "Хорошее",          ElectricalState = "Хорошее",    Recommendations = "Следующая замена масла через 10 000 км." },
@@ -343,7 +310,6 @@ public static class DbSeeder
         });
         db.SaveChanges();
 
-        // ---------- Reviews ----------
         db.Reviews.AddRange(new[]
         {
             new Review { ClientId = cl1.Id, WorkOrderId = wo1.Id, Rating = 5, Comment = "Отличный сервис, всё сделали быстро и качественно!", CreatedAt = now.AddDays(-8) },
@@ -353,7 +319,6 @@ public static class DbSeeder
         });
         db.SaveChanges();
 
-        // ---------- Logins (учётные записи) ----------
         db.Set<Login>().AddRange(new[]
         {
             new Login { LoginName = "admin",     Password = "admin",   UserId = adminUser.Id },

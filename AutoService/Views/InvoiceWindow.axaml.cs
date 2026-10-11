@@ -5,6 +5,7 @@ using AutoService.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AutoService.Views;
 
@@ -37,10 +38,10 @@ public partial class InvoiceWindow : Window
         }
         else
         {
-            // Pre-fill with work order total
             AmountBeforeDiscountText.Text = workOrder.TotalCost.ToString("F2");
             DiscountText.Text = "0";
             TaxText.Text = "0";
+            StatusCombo.SelectedItem = "Создан";
             CalculateTotal();
         }
     }
@@ -56,61 +57,90 @@ public partial class InvoiceWindow : Window
         }
     }
 
-    private void Save_Click(object? sender, RoutedEventArgs e)
+    private async void Save_Click(object? sender, RoutedEventArgs e)
     {
-        if (_workOrder == null) return;
+        await SaveInvoiceAsync(closeAfterSave: true);
+    }
+
+    private async Task<bool> SaveInvoiceAsync(bool closeAfterSave)
+    {
+        if (_workOrder == null) return false;
 
         using var db = new AppDbContext();
 
-        if (!decimal.TryParse(AmountBeforeDiscountText.Text, out var amount)) return;
-        if (!decimal.TryParse(DiscountText.Text, out var discount)) discount = 0;
-        if (!decimal.TryParse(TaxText.Text, out var tax)) tax = 0;
+        if (!decimal.TryParse(AmountBeforeDiscountText.Text, out var amount) || amount < 0
+            || !decimal.TryParse(DiscountText.Text, out var discount) || discount < 0 || discount > amount
+            || !decimal.TryParse(TaxText.Text, out var tax) || tax < 0)
+        {
+            await InputDialog.ShowMessage(this, "Проверьте сумму, скидку и налог: значения должны быть корректными и неотрицательными, а скидка — не больше суммы.");
+            return false;
+        }
 
         var total = amount - discount + tax;
-        var status = StatusCombo.SelectedItem as string ?? "Создан";
+        Invoice invoice;
 
         if (_invoice != null)
         {
             var existing = db.Invoices.FirstOrDefault(i => i.Id == _invoice.Id);
-            if (existing != null)
+            if (existing == null)
             {
-                existing.AmountBeforeDiscount = amount;
-                existing.Discount = discount;
-                existing.Tax = tax;
-                existing.TotalAmount = total;
-                existing.Status = status;
+                await InputDialog.ShowMessage(this, "Счёт не найден.");
+                return false;
             }
+            invoice = existing;
         }
         else
         {
-            var newInvoice = new Invoice
-            {
-                WorkOrderId = _workOrder.Id,
-                CreatedAt = DateTime.Now,
-                AmountBeforeDiscount = amount,
-                Discount = discount,
-                Tax = tax,
-                TotalAmount = total,
-                Status = status
-            };
-            db.Invoices.Add(newInvoice);
+            invoice = new Invoice { WorkOrderId = _workOrder.Id, CreatedAt = DateTime.Now };
+            db.Invoices.Add(invoice);
         }
 
+        if (invoice.Id != 0)
+        {
+            var reservedPayments = db.Payments
+                .Where(p => p.InvoiceId == invoice.Id && p.Status != "Отменён" && p.Status != "Отменен")
+                .Sum(p => p.Amount);
+            if (total < reservedPayments)
+            {
+                await InputDialog.ShowMessage(this, "Итог счёта нельзя уменьшить ниже уже внесённых платежей.");
+                return false;
+            }
+        }
+
+        invoice.AmountBeforeDiscount = amount;
+        invoice.Discount = discount;
+        invoice.Tax = tax;
+        invoice.TotalAmount = total;
         db.SaveChanges();
-        this.Close();
+        var paid = db.Payments
+            .Where(p => p.InvoiceId == invoice.Id && (p.Status == "Завершён" || p.Status == "Успешно"))
+            .Sum(p => p.Amount);
+        invoice.Status = paid >= total
+            ? "Оплачен"
+            : paid > 0 ? "Частично оплачен" : "Создан";
+        db.SaveChanges();
+
+        _invoice = invoice;
+        StatusCombo.SelectedItem = invoice.Status;
+        TotalAmountText.Text = total.ToString("F2");
+        if (closeAfterSave) Close();
+        return true;
     }
 
-    private void AddPayment_Click(object? sender, RoutedEventArgs e)
+    private async void AddPayment_Click(object? sender, RoutedEventArgs e)
     {
-        if (_invoice == null)
+        if (_invoice == null && !await SaveInvoiceAsync(closeAfterSave: false))
         {
-            // Save invoice first
-            Save_Click(sender, e);
             return;
         }
 
+        if (_invoice == null) return;
         var paymentWindow = new PaymentWindow();
         paymentWindow.SetInvoice(_invoice);
-        paymentWindow.ShowDialog(this);
+        await paymentWindow.ShowDialog(this);
+
+        using var db = new AppDbContext();
+        _invoice = db.Invoices.FirstOrDefault(i => i.Id == _invoice.Id);
+        if (_invoice != null) StatusCombo.SelectedItem = _invoice.Status;
     }
 }

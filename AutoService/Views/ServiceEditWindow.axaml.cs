@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using AutoService.Data;
 using AutoService.Models;
 using System.Linq;
@@ -20,9 +20,16 @@ public partial class ServiceEditWindow : Window
         }
     }
 
-    private void Save_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void Save_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         using var db = new AppDbContext();
+        if (string.IsNullOrWhiteSpace(NameText.Text)
+            || !decimal.TryParse(PriceText.Text, out var price) || price < 0
+            || !int.TryParse(DurationText.Text, out var duration) || duration <= 0)
+        {
+            await InputDialog.ShowMessage(this, "Укажите название, неотрицательную стоимость и длительность больше нуля.");
+            return;
+        }
 
         if (ServiceVariableData.SelectedService != null)
         {
@@ -32,8 +39,8 @@ public partial class ServiceEditWindow : Window
             {
                 thisService.Name = NameText.Text;
                 thisService.Description = DescriptionText.Text;
-                thisService.BasePrice = decimal.TryParse(PriceText.Text, out var p) ? p : 0;
-                thisService.DurationMinutes = int.TryParse(DurationText.Text, out var d) ? d : 0;
+                thisService.BasePrice = price;
+                thisService.DurationMinutes = duration;
             }
         }
         else
@@ -42,8 +49,8 @@ public partial class ServiceEditWindow : Window
             {
                 Name = NameText.Text ?? string.Empty,
                 Description = DescriptionText.Text,
-                BasePrice = decimal.TryParse(PriceText.Text, out var p) ? p : 0,
-                DurationMinutes = int.TryParse(DurationText.Text, out var d) ? d : 0,
+                BasePrice = price,
+                DurationMinutes = duration,
             };
             db.Services.Add(newService);
         }

@@ -16,7 +16,7 @@
         <TextBlock Text="Пароль" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBox x:Name="PasswordText" Grid.Row="2" Grid.Column="1" Margin="8,0,0,4"/>
 
-        <TextBlock Text="Email" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="Эл. почта" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBox x:Name="EmailText" Grid.Row="3" Grid.Column="1" Margin="8,0,0,4"/>
 
         <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>

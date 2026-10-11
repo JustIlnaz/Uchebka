@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutoService.Data;
@@ -14,7 +14,6 @@ public partial class AppDbContext : DbContext
     {
     }
 
-    // DbSets for domain entities
     public virtual DbSet<Role> Roles { get; set; }
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Department> Departments { get; set; }
@@ -41,11 +40,10 @@ public partial class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning Connection string is read from environment variable AUTOSERVICE_CONNECTION. Example: "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=secret"
-        => optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("AUTOSERVICE_CONNECTION") ?? "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=123;TrustServerCertificate=true");
+        => optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("AUTOSERVICE_CONNECTION") ?? "Host=localhost;Port=5432;Database=AutoServiceDb;Username=postgres;Password=love;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Configure keys and relationships where necessary
         modelBuilder.Entity<Role>(b =>
         {
             b.HasKey(x => x.Id);
@@ -87,7 +85,6 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<Service>(b => { b.HasKey(x => x.Id); b.Property(x => x.Name).IsRequired(); });
 
-        // Many-to-many: Mechanic <-> Service via MechanicService (explicit)
         modelBuilder.Entity<MechanicService>(b =>
         {
             b.HasKey(ms => new { ms.MechanicId, ms.ServiceId });

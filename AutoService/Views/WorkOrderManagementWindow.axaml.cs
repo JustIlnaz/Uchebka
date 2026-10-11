@@ -18,8 +18,32 @@ public partial class WorkOrderManagementWindow : Window
         InitializeComponent();
         PageSizeCombo.SelectedIndex = 0;
         StatusCombo.ItemsSource = new[] { "Новый", "В работе", "Завершён", "Отменён" };
+        ApplyRoleAccess();
         LoadMechanics();
         LoadWorkOrders();
+    }
+
+    private bool IsMechanic => UserSession.CurrentUser?.RoleName?.Trim().ToLowerInvariant() is "mechanic" or "механик"
+        || UserSession.CurrentUser?.RoleId == 2;
+    private bool IsClient => UserSession.CurrentUser?.RoleName?.Trim().ToLowerInvariant() is "client" or "клиент"
+        || UserSession.CurrentUser?.RoleId == 4;
+
+    private void ApplyRoleAccess()
+    {
+        if (IsMechanic)
+        {
+            MechanicCombo.IsVisible = false;
+            InvoiceButton.IsVisible = false;
+            AddWorkOrderButton.IsVisible = false;
+        }
+
+        if (IsClient)
+        {
+            MechanicCombo.IsVisible = false;
+            InvoiceButton.IsVisible = false;
+            InspectionButton.IsVisible = false;
+            AddWorkOrderButton.IsVisible = false;
+        }
     }
 
     private void LoadMechanics()
@@ -38,7 +62,21 @@ public partial class WorkOrderManagementWindow : Window
     {
         IQueryable<WorkOrder> q = db.WorkOrders
             .Include(w => w.Appointment).ThenInclude(a => a.Car)
+            .Include(w => w.Appointment).ThenInclude(a => a.Client)
             .Include(w => w.Mechanic).ThenInclude(m => m.User);
+
+        if (IsMechanic)
+        {
+            var userId = UserSession.CurrentUser?.Id;
+            q = q.Where(w => w.Mechanic != null && w.Mechanic.UserId == userId);
+        }
+        else if (IsClient)
+        {
+            var email = UserSession.CurrentUser?.Email?.Trim().ToLowerInvariant();
+            q = q.Where(w => email != null && w.Appointment != null
+                && w.Appointment.Client != null && w.Appointment.Client.Email != null
+                && w.Appointment.Client.Email.Trim().ToLower() == email);
+        }
 
         if (StatusCombo.SelectedItem is string status && !string.IsNullOrWhiteSpace(status))
             q = q.Where(w => w.Status == status);
@@ -121,6 +159,7 @@ public partial class WorkOrderManagementWindow : Window
     {
         var workOrder = WorkOrdersListBox.SelectedItem as WorkOrder;
         if (workOrder == null) return;
+        if (IsClient) return;
 
         WorkOrderVariableData.SelectedWorkOrder = workOrder;
 

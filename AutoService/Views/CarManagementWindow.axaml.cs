@@ -14,9 +14,13 @@ public partial class CarManagementWindow : Window
     private int _totalCount = 0;
     private bool _sortByMileage;
 
+    private bool IsClient => UserSession.CurrentUser?.RoleName?.Trim().ToLowerInvariant() is "client" or "клиент"
+        || UserSession.CurrentUser?.RoleId == 4;
+
     public CarManagementWindow()
     {
         InitializeComponent();
+        AddCarButton.IsVisible = !IsClient;
         PageSizeCombo.SelectedIndex = 0;
         LoadCars();
     }
@@ -34,7 +38,16 @@ public partial class CarManagementWindow : Window
         try
         {
             using var db = new AppDbContext();
-            IQueryable<Car> q = db.Cars.Include(c => c.Make).Include(c => c.Category);
+            IQueryable<Car> q = db.Cars
+                .Include(c => c.Make)
+                .Include(c => c.Category)
+                .Include(c => c.Client);
+            if (IsClient)
+            {
+                var email = UserSession.CurrentUser?.Email?.Trim().ToLowerInvariant();
+                q = q.Where(c => email != null && c.Client != null && c.Client.Email != null
+                    && c.Client.Email.Trim().ToLower() == email);
+            }
             if (!string.IsNullOrWhiteSpace(query))
             {
                 var s = query.ToLower();
@@ -110,6 +123,7 @@ public partial class CarManagementWindow : Window
     {
         var car = CarsListBox.SelectedItem as Car;
         if (car == null) return;
+        if (IsClient) return;
 
         CarVariableData.SelectedCar = car;
 
